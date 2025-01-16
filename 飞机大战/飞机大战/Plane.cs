@@ -3,32 +3,17 @@ using Image = System.Drawing.Image;
 
 namespace 飞机大战
 {
-    internal class Plane
+    internal class Plane : Game
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        // 长
-        public int Length { get; set; }
-        // 宽
-        public int Width { get; set; }
-        public Image PlaneImage { get; set; }
-
-        public Plane()
+        public int Life { get; set; }
+        public Plane(int x, int y, int width, int height, Image images, int speed, GameState state, int life) : base(x, y, width, height, images, speed, state)
         {
+            this.Life = life;
         }
 
-        public Plane(int x, int y, int length, int width, Image planeImage)
+        public override void Draw(Graphics g)
         {
-            X = x;
-            Y = y;
-            Length = length;
-            Width = width;
-            PlaneImage = planeImage;
-        }
-
-        public void Draw(Graphics g)
-        {
-            g.DrawImage(PlaneImage, new Rectangle(X, Y, Width, Length));
+            g.DrawImage(Image, new Rectangle(X, Y, Width, Height));
 
         }
     }

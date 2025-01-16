@@ -7,9 +7,9 @@ namespace 飞机大战
 {
     public partial class Index : Form
     {
-        private Image[] _images = { Resources.bg, Resources.plane, Resources.boss };
-        private Background _background;
-        private Plane _userPlane;
+        private readonly Image[] _images = { Resources.bg, Resources.plane, Resources.boss };
+        private readonly Background _background;
+        private readonly Plane _userPlane;
         private GameState _gameState = GameState.NotStart;
         public Index()
         {
@@ -21,9 +21,9 @@ namespace 飞机大战
             MinimumSize = size;
             StartPosition = FormStartPosition.CenterScreen;
             // 创建背景对象
-            _background = new Background(_images[0], 5, size.Height, size.Width);
+            _background = new Background(0, -size.Height, size.Width, size.Height * 2, _images[0], 20, GameState.NotStart);
             // 创建玩家飞机
-            _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 41, 37, _images[1]);
+            _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 37, 41, _images[1], 0, GameState.NotStart, 100);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace 飞机大战
                 // 绘制提示词
                 graphics.DrawString("鼠标单击开始游戏", new Font("楷体", 19), Brushes.YellowGreen, 110, _userPlane.Y + 100);
                 // 绘制Boss飞机
-                new Plane(100, 100, 174, 240, _images[2]).Draw(graphics);
+                new Plane(100, 100, 240, 174, _images[2], 0, GameState.NotStart, 500).Draw(graphics);
             }
 
         }
@@ -72,7 +72,7 @@ namespace 飞机大战
         {
             // 手动触发重绘
             Invalidate();
-            _background.BackgroundStatus = GameState.Start;
+            _background.State = GameState.Start;
         }
         /// <summary>
         /// 鼠标移动，调整玩家飞机的位置
@@ -85,7 +85,7 @@ namespace 飞机大战
             {
                 Cursor.Hide();
                 _userPlane.X = e.X - _userPlane.Width / 2;
-                _userPlane.Y = e.Y - _userPlane.Length / 2;
+                _userPlane.Y = e.Y - _userPlane.Height / 2;
             }
         }
     }
