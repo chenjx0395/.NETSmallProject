@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using 飞机大战.Properties;
@@ -7,10 +8,12 @@ namespace 飞机大战
 {
     public partial class Index : Form
     {
-        private readonly Image[] _images = { Resources.bg, Resources.plane, Resources.boss };
+        private readonly Image[] _images = { Resources.bg, Resources.plane, Resources.boss ,Resources.shell };
         private readonly Background _background;
         private readonly Plane _userPlane;
         private GameState _gameState = GameState.NotStart;
+        // 弹幕
+        private readonly List<Shell> _shell = new List<Shell>();
         public Index()
         {
             InitializeComponent();
@@ -21,7 +24,7 @@ namespace 飞机大战
             MinimumSize = size;
             StartPosition = FormStartPosition.CenterScreen;
             // 创建背景对象
-            _background = new Background(0, -size.Height, size.Width, size.Height * 2, _images[0], 20, GameState.NotStart);
+            _background = new Background(0, -size.Height, size.Width, size.Height * 2, _images[0], 10, GameState.NotStart);
             // 创建玩家飞机
             _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 37, 41, _images[1], 0, GameState.NotStart, 100);
         }
@@ -49,6 +52,14 @@ namespace 飞机大战
                 // 绘制Boss飞机
                 new Plane(100, 100, 240, 174, _images[2], 0, GameState.NotStart, 500).Draw(graphics);
             }
+            else
+            {
+                // 绘制所有子弹
+                foreach (var shell in _shell)
+                {
+                    shell.Draw(graphics);
+                }
+            }
 
         }
 
@@ -62,6 +73,8 @@ namespace 飞机大战
             _gameState = GameState.Start;
             // 启用定时器来不停重新调用绘图事件
             timer1.Enabled = true;
+            // 创建一个子弹
+            _shell.Add(new Shell(_userPlane.X + _userPlane.Width / 2, _userPlane.Y - 10, 10, 10, _images[3], 10, GameState.Start));
         }
         /// <summary>
         /// 不停的触发重绘

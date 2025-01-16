@@ -3,7 +3,7 @@
 namespace 飞机大战
 {
 
-    public class Background : Game
+    public class Background : Game ,IMove
     {
 
         public Background(int x, int y, int width, int height, Image image, int speed, GameState state) : base(x, y, width, height, image, speed, state)
@@ -11,7 +11,7 @@ namespace 飞机大战
 
         }
         // 背景移动
-        private void Move()
+        public void Move()
         {
             if (Y + Speed >= 0)
             {
