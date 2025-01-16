@@ -34,6 +34,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Index
@@ -48,6 +49,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Index_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Index_Paint);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Index_MouseMove);
             this.ResumeLayout(false);
 
         }

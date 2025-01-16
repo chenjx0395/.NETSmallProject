@@ -40,10 +40,10 @@ namespace 飞机大战
             // 绘制背景图片
             var graphics = e.Graphics;
             _background.Draw(graphics);
+            // 绘制玩家飞机
+            _userPlane.Draw(graphics);
             if (_gameState == GameState.NotStart)
             {
-                // 绘制玩家飞机
-                _userPlane.Draw(graphics);
                 // 绘制提示词
                 graphics.DrawString("鼠标单击开始游戏", new Font("楷体", 19), Brushes.YellowGreen, 110, _userPlane.Y + 100);
                 // 绘制Boss飞机
@@ -73,6 +73,20 @@ namespace 飞机大战
             // 手动触发重绘
             Invalidate();
             _background.BackgroundStatus = GameState.Start;
+        }
+        /// <summary>
+        /// 鼠标移动，调整玩家飞机的位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Index_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_gameState == GameState.Start)
+            {
+                Cursor.Hide();
+                _userPlane.X = e.X - _userPlane.Width / 2;
+                _userPlane.Y = e.Y - _userPlane.Length / 2;
+            }
         }
     }
 }
