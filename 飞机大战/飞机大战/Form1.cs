@@ -10,7 +10,8 @@ namespace 飞机大战
         private Image[] _images = { Resources.bg, Resources.plane, Resources.boss };
         private Background _background;
         private Plane _userPlane;
-                public Index()
+        private GameState _gameState = GameState.NotStart;
+        public Index()
         {
             InitializeComponent();
             // 设置窗口大小，并不允许改变窗口大小，窗口居中
@@ -29,18 +30,25 @@ namespace 飞机大战
         {
 
         }
-
+        /// <summary>
+        /// 绘制事件，当游戏开始时，不绘制BOSS飞机和提示词
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Index_Paint(object sender, PaintEventArgs e)
         {
             // 绘制背景图片
             var graphics = e.Graphics;
             _background.Draw(graphics);
-            // 绘制玩家飞机
-            _userPlane.Draw(graphics);
-            // 绘制提示词
-            graphics.DrawString("鼠标单击开始游戏", new Font("楷体", 19), Brushes.YellowGreen, 110, _userPlane.Y + 100);
-            // 绘制Boss飞机
-            new Plane(100, 100, 174, 240, _images[2]).Draw(graphics);
+            if (_gameState == GameState.NotStart)
+            {
+                // 绘制玩家飞机
+                _userPlane.Draw(graphics);
+                // 绘制提示词
+                graphics.DrawString("鼠标单击开始游戏", new Font("楷体", 19), Brushes.YellowGreen, 110, _userPlane.Y + 100);
+                // 绘制Boss飞机
+                new Plane(100, 100, 174, 240, _images[2]).Draw(graphics);
+            }
 
         }
 
@@ -51,7 +59,9 @@ namespace 飞机大战
         /// <param name="e"></param>
         private void Index_Click(object sender, EventArgs e)
         {
-
+            _gameState = GameState.Start;
+            // 启用定时器来不停重新调用绘图事件
+            timer1.Enabled = true;
         }
         /// <summary>
         /// 不停的触发重绘
@@ -60,7 +70,9 @@ namespace 飞机大战
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            // 手动触发重绘
+            Invalidate();
+            _background.BackgroundStatus = GameState.Start;
         }
     }
 }

@@ -42,6 +42,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(972, 1571);
+            this.DoubleBuffered = true;
             this.Name = "Index";
             this.Text = "飞机大战";
             this.Load += new System.EventHandler(this.Form1_Load);
