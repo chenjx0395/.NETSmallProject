@@ -6,5 +6,7 @@
         Start,
         // 复合状态，代表敌人飞机，也代表游戏开始
         EnemyPlane,
+        EndState,
+        Death
     }
 }

@@ -38,6 +38,7 @@
             this.CreateBoss1Shell = new System.Windows.Forms.Timer(this.components);
             this.CreateBoss2 = new System.Windows.Forms.Timer(this.components);
             this.CreateBoss2Shell = new System.Windows.Forms.Timer(this.components);
+            this.CheckCollision = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Redraw
@@ -73,7 +74,14 @@
             // 
             this.CreateBoss2.Tick += new System.EventHandler(this.CreateBoss2_Tick);
             // 
+            // CreateBoss2Shell
+            // 
             this.CreateBoss2Shell.Tick += new System.EventHandler(this.CreateBoss2Shel_Tick);
+            // 
+            // CheckCollision
+            // 
+            this.CheckCollision.Tick += new System.EventHandler(this.CheckCollision_Tick);
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -102,6 +110,7 @@
         private System.Windows.Forms.Timer CreateBoss1Shell;
         private System.Windows.Forms.Timer CreateBoss2;
         private System.Windows.Forms.Timer CreateBoss2Shell;
+        private System.Windows.Forms.Timer CheckCollision;
     }
 }
 

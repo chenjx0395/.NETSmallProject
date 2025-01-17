@@ -131,5 +131,53 @@
   <ItemGroup>
     <None Include="Resources\littleboss2bullet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e12.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e13.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e14.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e15.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e16.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
