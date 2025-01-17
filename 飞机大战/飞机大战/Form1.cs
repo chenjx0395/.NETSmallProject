@@ -14,7 +14,7 @@ namespace 飞机大战
             ,Resources.enemy1, Resources.enemy2, Resources.enemy2bullet,
             Resources.gift, Resources.littleboss1, Resources.littleboss1bullet,
             Resources.littleboss2, Resources.plane, Resources.shell, Resources.doubleshell,
-            Resources.tripleshell
+            Resources.tripleshell, Resources.littleboss2bullet
         };
 
         private readonly Random _random = new Random();
@@ -27,6 +27,9 @@ namespace 飞机大战
         private readonly List<Plane> _plane1 = new List<Plane>();
         // 敌方飞机2号
         private readonly List<Plane> _plane2 = new List<Plane>();
+        // boss1和2
+        private readonly List<Plane> _boss1 = new List<Plane>();
+        private readonly List<Plane> _boss2 = new List<Plane>();
         public Index()
         {
             InitializeComponent();
@@ -48,6 +51,24 @@ namespace 飞机大战
             // 调整生产敌方飞机2号速度
             CreateEnemyPlane2.Interval = 1500;
             CreateEnemyPlane2Shell.Interval = 500;
+            // boss1
+            CreateBoss1.Interval = 3000;
+            CreateBoss1Shell.Interval = 500;
+            // boss2
+            CreateBoss2.Interval = 5000;
+            CreateBoss2Shell.Interval = 500;
+        }
+
+        public sealed override Size MinimumSize
+        {
+            get => base.MinimumSize;
+            set => base.MinimumSize = value;
+        }
+
+        public sealed override Size MaximumSize
+        {
+            get => base.MaximumSize;
+            set => base.MaximumSize = value;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,6 +132,30 @@ namespace 飞机大战
                     }
                     plane.Draw(graphics);
                 }
+                // 绘制所有boss1号
+                for (var i = 0; i < _boss1.Count; i++)
+                {
+                    var plane = _boss1[i];
+                    // 将超出屏幕的飞机删除
+                    if (plane.Y > Height)
+                    {
+                        _boss1.Remove(plane);
+                        continue;
+                    }
+                    plane.Draw(graphics);
+                }
+                // 绘制所有boss2号
+                for (var i = 0; i < _boss2.Count; i++)
+                {
+                    var plane = _boss2[i];
+                    // 将超出屏幕的飞机删除
+                    if (plane.Y > Height)
+                    {
+                        _boss2.Remove(plane);
+                        continue;
+                    }
+                    plane.Draw(graphics);
+                }
             }
 
         }
@@ -133,6 +178,12 @@ namespace 飞机大战
             CreateEnemyPlane2.Enabled = true;
             // 启用定时器不停创建敌方飞机2号子弹
             CreateEnemyPlane2Shell.Enabled = true;
+            // 启用定时器不停创建boss1号
+            CreateBoss1.Enabled = true;
+            CreateBoss1Shell.Enabled = true;
+            // 启用定时器不停创建boss2号
+            CreateBoss2.Enabled = true;
+            CreateBoss2Shell.Enabled = true;
         }
         /// <summary>
         /// 不停的触发重绘
@@ -187,6 +238,36 @@ namespace 飞机大战
             foreach (var plane in _plane2)
             {
                 _shell.Add(new Shell(plane.X + (plane.Width /2 - 5) , plane.Y + plane.Height, 14, 25, _images[6], 10, GameState.EnemyPlane));
+            }
+        }
+
+        private void CreateBoss1_Tick(object sender, EventArgs e)
+        {
+            var x = _random.Next(0, Width - 172);
+            var plane = new Plane(x, 0, 172, 112, _images[8], 5, GameState.EnemyPlane, 300);
+            _boss1.Add(plane);
+        }
+
+        private void CreateBoss1Shell_Tick(object sender, EventArgs e)
+        {
+            foreach (var plane in _boss1)
+            {
+                _shell.Add(new Shell(plane.X + (plane.Width / 2 - 5), plane.Y + plane.Height, 14, 25, _images[9], 15, GameState.EnemyPlane));
+            }
+        }
+
+        private void CreateBoss2_Tick(object sender, EventArgs e)
+        {
+            var x = _random.Next(0, Width - 172);
+            var plane = new Plane(x, 0, 172, 112, _images[10], 5, GameState.EnemyPlane, 500);
+            _boss2.Add(plane);
+        }
+
+        private void CreateBoss2Shel_Tick(object sender, EventArgs e)
+        {
+            foreach (var plane in _boss2)
+            {
+                _shell.Add(new Shell(plane.X + (plane.Width / 2 - 5), plane.Y + plane.Height, 21, 59, _images[15], 15, GameState.EnemyPlane));
             }
         }
     }

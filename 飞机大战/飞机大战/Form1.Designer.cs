@@ -34,6 +34,10 @@
             this.CreateEnemyPlane1 = new System.Windows.Forms.Timer(this.components);
             this.CreateEnemyPlane2 = new System.Windows.Forms.Timer(this.components);
             this.CreateEnemyPlane2Shell = new System.Windows.Forms.Timer(this.components);
+            this.CreateBoss1 = new System.Windows.Forms.Timer(this.components);
+            this.CreateBoss1Shell = new System.Windows.Forms.Timer(this.components);
+            this.CreateBoss2 = new System.Windows.Forms.Timer(this.components);
+            this.CreateBoss2Shell = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Redraw
@@ -57,12 +61,25 @@
             // 
             this.CreateEnemyPlane2Shell.Tick += new System.EventHandler(this.CreateEnemyPlane2Shell_Tick);
             // 
+            // CreateBoss1
+            // 
+            this.CreateBoss1.Tick += new System.EventHandler(this.CreateBoss1_Tick);
+            // 
+            // CreateBoss1Shell
+            // 
+            this.CreateBoss1Shell.Tick += new System.EventHandler(this.CreateBoss1Shell_Tick);
+            // 
+            // CreateBoss2
+            // 
+            this.CreateBoss2.Tick += new System.EventHandler(this.CreateBoss2_Tick);
+            // 
+            this.CreateBoss2Shell.Tick += new System.EventHandler(this.CreateBoss2Shel_Tick);
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 1571);
+            this.ClientSize = new System.Drawing.Size(972, 996);
             this.DoubleBuffered = true;
             this.Name = "Index";
             this.Text = "飞机大战";
@@ -81,6 +98,10 @@
         private System.Windows.Forms.Timer CreateEnemyPlane1;
         private System.Windows.Forms.Timer CreateEnemyPlane2;
         private System.Windows.Forms.Timer CreateEnemyPlane2Shell;
+        private System.Windows.Forms.Timer CreateBoss1;
+        private System.Windows.Forms.Timer CreateBoss1Shell;
+        private System.Windows.Forms.Timer CreateBoss2;
+        private System.Windows.Forms.Timer CreateBoss2Shell;
     }
 }
 
