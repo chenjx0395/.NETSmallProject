@@ -12,12 +12,21 @@ namespace 飞机大战
         //画
         public override void Draw(Graphics g)
         {
-            if(State == GameState.Start) Move();
+            if (State == GameState.Start) Move();
             g.DrawImage(Image, X, Y, Width, Height);
         }
         public void Move()
         {
             Y -= Speed;
+        }
+        /// <summary>
+        ///  子弹销毁判断，如果子弹超出屏幕，则销毁
+        /// </summary>
+        /// <param name="height">屏幕高度</param>
+        /// <returns></returns>
+        public bool Destroy(int height)
+        {
+            return Y < 100;
         }
     }
 }

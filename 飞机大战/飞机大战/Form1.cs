@@ -26,7 +26,10 @@ namespace 飞机大战
             // 创建背景对象
             _background = new Background(0, -size.Height, size.Width, size.Height * 2, _images[0], 10, GameState.NotStart);
             // 创建玩家飞机
-            _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 37, 41, _images[1], 0, GameState.NotStart, 100);
+            _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 37, 41, _images[1], 0, GameState.NotStart,
+                100);
+            //调整用户飞机反射子弹速度
+            timer2.Interval = 300;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,10 +58,20 @@ namespace 飞机大战
             else
             {
                 // 绘制所有子弹
-                foreach (var shell in _shell)
+                for (var i = 0; i < _shell.Count; i++)
                 {
+                    var shell = _shell[i];
+                    // 将超出屏幕的子弹删除
+                    if (shell.Destroy(Height))
+                    {
+                        _shell.Remove(shell);
+                        continue;
+                    }
                     shell.Draw(graphics);
                 }
+                
+               
+               
             }
 
         }
@@ -73,8 +86,8 @@ namespace 飞机大战
             _gameState = GameState.Start;
             // 启用定时器来不停重新调用绘图事件
             timer1.Enabled = true;
-            // 创建一个子弹
-            _shell.Add(new Shell(_userPlane.X + _userPlane.Width / 2, _userPlane.Y - 10, 10, 10, _images[3], 10, GameState.Start));
+            // 启用定时器不停创建用户子弹
+            timer2.Enabled = true;
         }
         /// <summary>
         /// 不停的触发重绘
@@ -100,6 +113,13 @@ namespace 飞机大战
                 _userPlane.X = e.X - _userPlane.Width / 2;
                 _userPlane.Y = e.Y - _userPlane.Height / 2;
             }
+        }
+
+        // 产生用户飞机子弹
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // 创建一个子弹
+            _shell.Add(new Shell(_userPlane.X + _userPlane.Width / 2, _userPlane.Y - 10, 10, 10, _images[3], 10, GameState.Start));
         }
     }
 }
