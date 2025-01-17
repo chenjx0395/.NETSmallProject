@@ -29,18 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Redraw = new System.Windows.Forms.Timer(this.components);
+            this.CreateUserPlaneShell = new System.Windows.Forms.Timer(this.components);
+            this.CreateEnemyPlane1 = new System.Windows.Forms.Timer(this.components);
+            this.CreateEnemyPlane2 = new System.Windows.Forms.Timer(this.components);
+            this.CreateEnemyPlane2Shell = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer1
+            // Redraw
             // 
-            this.timer1.Interval = 50;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Redraw.Interval = 50;
+            this.Redraw.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
+            // CreateUserPlaneShell
             // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.CreateUserPlaneShell.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // CreateEnemyPlane1
+            // 
+            this.CreateEnemyPlane1.Tick += new System.EventHandler(this.CreateEnemyPlane1_Tick);
+            // 
+            // CreateEnemyPlane2
+            // 
+            this.CreateEnemyPlane2.Tick += new System.EventHandler(this.CreateEnemyPlane2_Tick);
+            // 
+            // CreateEnemyPlane2Shell
+            // 
+            this.CreateEnemyPlane2Shell.Tick += new System.EventHandler(this.CreateEnemyPlane2Shell_Tick);
             // 
             // Index
             // 
@@ -61,8 +76,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer Redraw;
+        private System.Windows.Forms.Timer CreateUserPlaneShell;
+        private System.Windows.Forms.Timer CreateEnemyPlane1;
+        private System.Windows.Forms.Timer CreateEnemyPlane2;
+        private System.Windows.Forms.Timer CreateEnemyPlane2Shell;
     }
 }
 

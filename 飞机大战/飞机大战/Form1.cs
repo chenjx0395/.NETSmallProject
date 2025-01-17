@@ -8,12 +8,25 @@ namespace 飞机大战
 {
     public partial class Index : Form
     {
-        private readonly Image[] _images = { Resources.bg, Resources.plane, Resources.boss ,Resources.shell };
+        private readonly Image[] _images =
+        {
+            Resources.bg, Resources.plane, Resources.boss ,Resources.shell
+            ,Resources.enemy1, Resources.enemy2, Resources.enemy2bullet,
+            Resources.gift, Resources.littleboss1, Resources.littleboss1bullet,
+            Resources.littleboss2, Resources.plane, Resources.shell, Resources.doubleshell,
+            Resources.tripleshell
+        };
+
+        private readonly Random _random = new Random();
         private readonly Background _background;
         private readonly Plane _userPlane;
         private GameState _gameState = GameState.NotStart;
         // 弹幕
         private readonly List<Shell> _shell = new List<Shell>();
+        // 敌方飞机1号
+        private readonly List<Plane> _plane1 = new List<Plane>();
+        // 敌方飞机2号
+        private readonly List<Plane> _plane2 = new List<Plane>();
         public Index()
         {
             InitializeComponent();
@@ -28,8 +41,13 @@ namespace 飞机大战
             // 创建玩家飞机
             _userPlane = new Plane((size.Width / 2) - 25, size.Height - 250, 37, 41, _images[1], 0, GameState.NotStart,
                 100);
-            //调整用户飞机反射子弹速度
-            timer2.Interval = 300;
+            //调整用户飞机发射子弹速度
+            CreateUserPlaneShell.Interval = 300;
+            // 调整生产敌方飞机1号速度
+            CreateEnemyPlane1.Interval = 500;
+            // 调整生产敌方飞机2号速度
+            CreateEnemyPlane2.Interval = 1500;
+            CreateEnemyPlane2Shell.Interval = 500;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,9 +87,30 @@ namespace 飞机大战
                     }
                     shell.Draw(graphics);
                 }
-                
-               
-               
+                // 绘制所有敌方飞机1号
+                for (var i = 0; i < _plane1.Count; i++)
+                {
+                    var plane = _plane1[i];
+                    // 将超出屏幕的飞机删除
+                    if (plane.Y > Height)
+                    {
+                        _plane1.Remove(plane);
+                        continue;
+                    }
+                    plane.Draw(graphics);
+                }
+                // 绘制所有敌方飞机2号
+                for (var i = 0; i < _plane2.Count; i++)
+                {
+                    var plane = _plane2[i];
+                    // 将超出屏幕的飞机删除
+                    if (plane.Y > Height)
+                    {
+                        _plane2.Remove(plane);
+                        continue;
+                    }
+                    plane.Draw(graphics);
+                }
             }
 
         }
@@ -85,9 +124,15 @@ namespace 飞机大战
         {
             _gameState = GameState.Start;
             // 启用定时器来不停重新调用绘图事件
-            timer1.Enabled = true;
+            Redraw.Enabled = true;
             // 启用定时器不停创建用户子弹
-            timer2.Enabled = true;
+            CreateUserPlaneShell.Enabled = true;
+            // 启用定时器不停创建敌方飞机1号
+            CreateEnemyPlane1.Enabled = true;
+            // 启用定时器不停创建敌方飞机2号
+            CreateEnemyPlane2.Enabled = true;
+            // 启用定时器不停创建敌方飞机2号子弹
+            CreateEnemyPlane2Shell.Enabled = true;
         }
         /// <summary>
         /// 不停的触发重绘
@@ -119,7 +164,30 @@ namespace 飞机大战
         private void timer2_Tick(object sender, EventArgs e)
         {
             // 创建一个子弹
-            _shell.Add(new Shell(_userPlane.X + _userPlane.Width / 2, _userPlane.Y - 10, 10, 10, _images[3], 10, GameState.Start));
+            _shell.Add(new Shell(_userPlane.X + _userPlane.Width / 2, _userPlane.Y - 10, 14, 29, _images[3], 10, GameState.Start));
+        }
+
+        private void CreateEnemyPlane1_Tick(object sender, EventArgs e)
+        {
+            var x = _random.Next(0, Width - 32);
+            var plane = new Plane(x, 0, 32, 24, _images[4], 5, GameState.EnemyPlane, 30);
+            _plane1.Add(plane);
+
+        }
+
+        private void CreateEnemyPlane2_Tick(object sender, EventArgs e)
+        {
+            var x = _random.Next(0, Width - 44);
+            var plane = new Plane(x, 0, 44, 67, _images[5], 5, GameState.EnemyPlane, 50);
+            _plane2.Add(plane);
+        }
+
+        private void CreateEnemyPlane2Shell_Tick(object sender, EventArgs e)
+        {
+            foreach (var plane in _plane2)
+            {
+                _shell.Add(new Shell(plane.X + (plane.Width /2 - 5) , plane.Y + plane.Height, 14, 25, _images[6], 10, GameState.EnemyPlane));
+            }
         }
     }
 }

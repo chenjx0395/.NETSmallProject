@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace 飞机大战
 {
@@ -12,12 +11,19 @@ namespace 飞机大战
         //画
         public override void Draw(Graphics g)
         {
-            if (State == GameState.Start) Move();
+             Move();
             g.DrawImage(Image, X, Y, Width, Height);
         }
         public void Move()
         {
-            Y -= Speed;
+            if (State == GameState.EnemyPlane)
+            {
+                Y += Speed;
+            }
+            else
+            {
+                Y -= Speed;
+            }
         }
         /// <summary>
         ///  子弹销毁判断，如果子弹超出屏幕，则销毁
@@ -26,7 +32,7 @@ namespace 飞机大战
         /// <returns></returns>
         public bool Destroy(int height)
         {
-            return Y < 100;
+            return Y <= 0 || Y >= height;
         }
     }
 }
