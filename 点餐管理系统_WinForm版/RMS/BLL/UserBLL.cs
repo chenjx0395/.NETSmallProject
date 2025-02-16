@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using Common;
 using DAL;
 using Model;
 
@@ -17,6 +19,8 @@ namespace BLL
         /// <returns>0-账号密码错误 1-员工登录 2-经理登录</returns>
         public int Login(string username, string password)
         {
+            password = MD5Util.GetMD5(password);
+            Console.WriteLine(password);
             var userInfo = _userDal.Login(username, password);
             if (userInfo == null)
             {
@@ -48,6 +52,7 @@ namespace BLL
         /// <returns>1 代表新增成功</returns>
         public int InsertUser(UserInfo userInfo)
         {
+            userInfo.Password = MD5Util.GetMD5(userInfo.Password);
             return _userDal.InsertUser(userInfo);
         }
         /// <summary>
@@ -57,6 +62,7 @@ namespace BLL
         /// <returns>1-修改成功</returns>
         public int UpdateUser(UserInfo userInfo)
         {
+            userInfo.Password = MD5Util.GetMD5(userInfo.Password);
             return _userDal.UpdateUser(userInfo);
         }
         /// <summary>

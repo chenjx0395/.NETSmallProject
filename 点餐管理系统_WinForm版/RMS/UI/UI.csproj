@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderingLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderingLogin.Designer.cs">
+      <DependentUpon>OrderingLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="UserManager.Designer.cs">
       <DependentUpon>UserManager.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="OrderingLogin.resx">
+      <DependentUpon>OrderingLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +107,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{DD3E4E81-FBBD-48ED-A209-4629D2142876}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{D7084E3B-82B2-424D-9E7E-30AF2EAB44B4}</Project>

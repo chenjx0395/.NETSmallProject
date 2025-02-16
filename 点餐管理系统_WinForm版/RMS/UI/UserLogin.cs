@@ -8,10 +8,15 @@ namespace UI
     public partial class UserLogin : Form
     {
         private readonly UserBLL _userBLL = new UserBLL();
+        private readonly OrderingLogin _orderingForm;
         public UserLogin()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        public UserLogin(OrderingLogin orderingForm) : this()
+        {
+            this._orderingForm = orderingForm;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,6 +57,9 @@ namespace UI
             }
         }
 
-       
+        private void UserLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _orderingForm.Show();
+        }
     }
 }
