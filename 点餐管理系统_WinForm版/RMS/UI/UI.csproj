@@ -51,11 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemberManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberManager.Designer.cs">
+      <DependentUpon>MemberManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderingLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderingLogin.Designer.cs">
       <DependentUpon>OrderingLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderingMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderingMain.Designer.cs">
+      <DependentUpon>OrderingMain.cs</DependentUpon>
     </Compile>
     <Compile Include="UserLogin.cs">
       <SubType>Form</SubType>
@@ -71,8 +83,14 @@
     <Compile Include="UserManager.Designer.cs">
       <DependentUpon>UserManager.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MemberManager.resx">
+      <DependentUpon>MemberManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OrderingLogin.resx">
       <DependentUpon>OrderingLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderingMain.resx">
+      <DependentUpon>OrderingMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>

@@ -58,8 +58,12 @@ namespace UI
                     LoadVerificationCode();
                     break;
                 case 1:
-                    label4.ForeColor = Color.Green;
-                    label4.Text = "登录成功";
+                    /*label4.ForeColor = Color.Green;
+                    label4.Text = "登录成功";*/
+                    OrderingMain orderingMain = new OrderingMain();
+                    orderingMain.StartPosition = FormStartPosition.CenterScreen;
+                    orderingMain.Show();
+                    this.Hide();
                     break;
             }
         }
