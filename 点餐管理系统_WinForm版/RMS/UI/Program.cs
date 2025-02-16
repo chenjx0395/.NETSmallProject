@@ -18,7 +18,7 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new OrderingLogin());
             // TODO 生产环境测试界面使用
-            Application.Run(new OrderingMain());
+            Application.Run(new MemberManager());
         }
     }
 }

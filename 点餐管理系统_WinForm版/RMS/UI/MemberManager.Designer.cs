@@ -31,6 +31,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dgvMemmber = new System.Windows.Forms.DataGridView();
@@ -45,7 +49,6 @@
             this.phoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RemoveFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -86,6 +89,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.dgvMemmber);
@@ -95,14 +102,53 @@
             this.panel2.Size = new System.Drawing.Size(1976, 798);
             this.panel2.TabIndex = 3;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 14F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1648, 715);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 45);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 16F);
+            this.label4.Location = new System.Drawing.Point(1013, 713);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 43);
+            this.label4.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 16F);
+            this.label3.Location = new System.Drawing.Point(905, 713);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 43);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "/";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 16F);
+            this.label2.Location = new System.Drawing.Point(815, 713);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 43);
+            this.label2.TabIndex = 3;
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1286, 698);
+            this.button3.Location = new System.Drawing.Point(1186, 698);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(303, 86);
             this.button3.TabIndex = 2;
             this.button3.Text = "下一页";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -112,6 +158,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "上一页";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dgvMemmber
             // 
@@ -120,19 +167,7 @@
             this.dgvMemmber.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMemmber.BackgroundColor = System.Drawing.Color.Sienna;
             this.dgvMemmber.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMemmber.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mid,
-            this.mname,
-            this.gender,
-            this.type,
-            this.discount,
-            this.money,
-            this.points,
-            this.birthday,
-            this.phoneNum,
-            this.registDate,
-            this.endDate,
-            this.RemoveFlag});
+            this.dgvMemmber.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.mid, this.mname, this.gender, this.type, this.discount, this.money, this.points, this.birthday, this.phoneNum, this.registDate, this.endDate });
             this.dgvMemmber.Location = new System.Drawing.Point(2, 6);
             this.dgvMemmber.Margin = new System.Windows.Forms.Padding(6);
             this.dgvMemmber.MultiSelect = false;
@@ -233,15 +268,6 @@
             this.endDate.Name = "endDate";
             this.endDate.ReadOnly = true;
             // 
-            // RemoveFlag
-            // 
-            this.RemoveFlag.DataPropertyName = "removeFlag";
-            this.RemoveFlag.HeaderText = "是否被删除";
-            this.RemoveFlag.MinimumWidth = 10;
-            this.RemoveFlag.Name = "RemoveFlag";
-            this.RemoveFlag.ReadOnly = true;
-            this.RemoveFlag.Visible = false;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button1);
@@ -288,6 +314,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "查找";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox1
             // 
@@ -307,6 +334,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdateMember
             // 
@@ -327,24 +355,26 @@
             this.btnAddMemMber.TabIndex = 0;
             this.btnAddMemMber.Text = "增加";
             this.btnAddMemMber.UseVisualStyleBackColor = true;
+            this.btnAddMemMber.Click += new System.EventHandler(this.btnAddMemMber_Click);
             // 
             // MemberManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2162, 1430);
+            this.ClientSize = new System.Drawing.Size(2031, 992);
             this.Controls.Add(this.tabControl1);
             this.Name = "MemberManager";
             this.Text = "MemberManager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MemberManager_FormClosed);
+            this.Load += new System.EventHandler(this.MemberManager_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemmber)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -354,6 +384,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdateMember;
+        private System.Windows.Forms.Button btnAddMemMber;
         private System.Windows.Forms.DataGridView dgvMemmber;
         private System.Windows.Forms.DataGridViewTextBoxColumn mid;
         private System.Windows.Forms.DataGridViewTextBoxColumn mname;
@@ -366,14 +404,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn registDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RemoveFlag;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdateMember;
-        private System.Windows.Forms.Button btnAddMemMber;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
