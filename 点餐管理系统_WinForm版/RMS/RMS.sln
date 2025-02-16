@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{B73C3E46-5E3E-4FAA-A4D0-C19CA470F9C8}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{5931839C-81B6-4E2D-AAEE-10E06A014950}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{D7084E3B-82B2-424D-9E7E-30AF2EAB44B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D7084E3B-82B2-424D-9E7E-30AF2EAB44B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7084E3B-82B2-424D-9E7E-30AF2EAB44B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7084E3B-82B2-424D-9E7E-30AF2EAB44B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70DB3C52-C26D-41BC-B740-24CF4F21F0D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
