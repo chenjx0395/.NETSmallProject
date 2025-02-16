@@ -50,5 +50,23 @@ namespace BLL
         {
             return _userDal.InsertUser(userInfo);
         }
+        /// <summary>
+        /// 修改员工信息
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns>1-修改成功</returns>
+        public int UpdateUser(UserInfo userInfo)
+        {
+            return _userDal.UpdateUser(userInfo);
+        }
+        /// <summary>
+        /// 更加员工ID删除员工
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>1-代表删除成功</returns>
+        public int DeleteUserById(int userId)
+        {
+            return _userDal.DeleteUserById(userId);
+        }
     }
 }

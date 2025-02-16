@@ -70,5 +70,41 @@ namespace DAL
             var result = SqLiteHelper.ExecuteNonQuery(sql, parms);
             return result;
         }
+
+        /// <summary>
+        /// 修改员工信息
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns>1-修改成功</returns>
+        public int UpdateUser(UserInfo userInfo)
+        {
+            var sql =
+                "update UserInfo set username = @username , password = @password , realname = @realname , position = @position where uid = @uid;";
+            SQLiteParameter[] parms =
+            {
+                new SQLiteParameter("@username", userInfo.Username),
+                new SQLiteParameter("@password", userInfo.Password),
+                new SQLiteParameter("@realname", userInfo.RealName),
+                new SQLiteParameter("@position", userInfo.Position),
+                new SQLiteParameter("@uid", userInfo.Uid)
+            };
+            var result = SqLiteHelper.ExecuteNonQuery(sql, parms);
+            return result;
+        }
+        /// <summary>
+        /// 根据员工ID删除员工
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>1-代表删除成功</returns>
+        public int DeleteUserById(int userId)
+        {
+            var sql = "delete from UserInfo where uid = @uid;";
+            SQLiteParameter[] parms =
+            {
+                new SQLiteParameter("@uid", userId)
+            };
+            var result = SqLiteHelper.ExecuteNonQuery(sql, parms);
+            return result;
+        }
     }
 }

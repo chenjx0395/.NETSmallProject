@@ -184,6 +184,7 @@
             this.updateUserButton.TabIndex = 15;
             this.updateUserButton.Text = "修改";
             this.updateUserButton.UseVisualStyleBackColor = false;
+            this.updateUserButton.Click += new System.EventHandler(this.updateUserButton_Click);
             // 
             // deleteUserButton
             // 
@@ -196,6 +197,7 @@
             this.deleteUserButton.TabIndex = 14;
             this.deleteUserButton.Text = "删除选中的数据";
             this.deleteUserButton.UseVisualStyleBackColor = false;
+            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
             // insertUserButton
             // 
