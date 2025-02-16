@@ -50,7 +50,7 @@ namespace UI
                     /*LoginPrompLabel.ForeColor = Color.Green;
                     LoginPrompLabel.Text = "登录成功";*/
                     // 登录成功，跳转到用户管理界面
-                    UserManager userManager = new UserManager(this);
+                    UserManager userManager = new UserManager();
                     userManager.StartPosition = FormStartPosition.CenterScreen;
                     userManager.Show();
                     this.Hide();
