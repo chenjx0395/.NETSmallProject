@@ -207,6 +207,7 @@
             this.insertUserButton.TabIndex = 12;
             this.insertUserButton.Text = "添加";
             this.insertUserButton.UseVisualStyleBackColor = false;
+            this.insertUserButton.Click += new System.EventHandler(this.insertUserButton_Click);
             // 
             // positionRadioButton2
             // 

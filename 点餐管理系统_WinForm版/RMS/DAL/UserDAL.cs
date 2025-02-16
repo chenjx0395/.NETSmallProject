@@ -39,7 +39,10 @@ namespace DAL
             return userInfo;
 
         }
-
+        /// <summary>
+        /// 获取所有员工信息
+        /// </summary>
+        /// <returns></returns>
         public DataTable GetUserList()
         {
             var sql =
@@ -47,6 +50,25 @@ namespace DAL
             var dataTable = SqLiteHelper.ExecuteDataTable(sql);
             Console.WriteLine(dataTable.Rows.Count);
             return dataTable;
+        }
+        /// <summary>
+        /// 添加员工
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns>1 代表添加成功</returns>
+        public int InsertUser(UserInfo userInfo)
+        {
+            var sql =
+                "insert into UserInfo(username,password,realname,position) values(@username,@password,@realname,@position);";
+            SQLiteParameter[] parms =
+            {
+                new SQLiteParameter("@username", userInfo.Username),
+                new SQLiteParameter("@password", userInfo.Password),
+                new SQLiteParameter("@realname", userInfo.RealName),
+                new SQLiteParameter("@position", userInfo.Position)
+            };
+            var result = SqLiteHelper.ExecuteNonQuery(sql, parms);
+            return result;
         }
     }
 }

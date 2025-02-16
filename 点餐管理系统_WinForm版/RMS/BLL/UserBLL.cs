@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using DAL;
+using Model;
 
 namespace BLL
 {
@@ -33,12 +34,21 @@ namespace BLL
         }
 
         /// <summary>
-        /// 获取所有用户信息
+        /// 获取所有员工信息
         /// </summary>
         /// <returns></returns>
         public DataTable GetUserList()
         {
             return _userDal.GetUserList();
+        }
+        /// <summary>
+        /// 新增员工
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns>1 代表新增成功</returns>
+        public int InsertUser(UserInfo userInfo)
+        {
+            return _userDal.InsertUser(userInfo);
         }
     }
 }
