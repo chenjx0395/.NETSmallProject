@@ -9,7 +9,7 @@ namespace UI
     public partial class OrderingLogin : Form
     {
         private string _verificationCode;
-        private OrderingBLL _orderingBLL = new OrderingBLL();
+        private readonly OrderingBLL _orderingBLL = new OrderingBLL();
         public OrderingLogin()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace UI
             //检查验证码是否输入正确
             if (textBox3.Text != _verificationCode)
             {
-                MessageBox.Show("验证码错误，请重新输入");
+                MessageBox.Show(@"验证码错误，请重新输入");
                 LoadVerificationCode();
                 return;
             }
@@ -54,7 +54,7 @@ namespace UI
             {
                 case 0 :
                     label4.ForeColor = Color.Red;
-                    label4.Text = "用户名或密码错误";
+                    label4.Text = @"用户名或密码错误";
                     LoadVerificationCode();
                     break;
                 case 1:

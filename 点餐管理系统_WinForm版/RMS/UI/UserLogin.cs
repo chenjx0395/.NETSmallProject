@@ -39,11 +39,11 @@ namespace UI
             {
                 case 0:
                     LoginPrompLabel.ForeColor = Color.Red;
-                    LoginPrompLabel.Text = "账号密码错误";
+                    LoginPrompLabel.Text = @"账号密码错误";
                     break;
                 case 1:
                     LoginPrompLabel.ForeColor = Color.Red;
-                    LoginPrompLabel.Text = "请使用经理账号登录";
+                    LoginPrompLabel.Text = @"请使用经理账号登录";
                     break;
                 case 2:
                     /*LoginPrompLabel.ForeColor = Color.Green;

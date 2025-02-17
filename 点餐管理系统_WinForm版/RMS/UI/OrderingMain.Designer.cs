@@ -356,7 +356,7 @@
             this.btnMemmber.Size = new System.Drawing.Size(196, 174);
             this.btnMemmber.TabIndex = 66;
             this.btnMemmber.UseVisualStyleBackColor = true;
-            this.btnMemmber.Click += new System.EventHandler(this.btnMemmber_Click);
+            this.btnMemmber.Click += new System.EventHandler(this.btnMember_Click);
             // 
             // splitContainer1
             // 

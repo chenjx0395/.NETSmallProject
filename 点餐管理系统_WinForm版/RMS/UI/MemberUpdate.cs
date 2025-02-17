@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 using BLL;
 using Model;
@@ -7,8 +8,8 @@ namespace UI
 {
     public partial class MemberUpdate : Form
     {
-        private MemberTypeBLL _memberTypeBll = new MemberTypeBLL();
-        private MemberInfoBLL _memberInfoBLL = new MemberInfoBLL();
+        private readonly MemberTypeBLL _memberTypeBll = new MemberTypeBLL();
+        private readonly MemberInfoBLL _memberInfoBLL = new MemberInfoBLL();
         public MemberUpdate()
         {
             InitializeComponent();
@@ -34,15 +35,15 @@ namespace UI
            txtMid.Text = memberInfo.Mid.ToString();
            txtMname.Text = memberInfo.Mname;
            cmbMemType.SelectedValue = memberInfo.Type ;
-           txtMoney.Text = memberInfo.Money.ToString();
-           txtPoints.Text = memberInfo.Points.ToString();
+           txtMoney.Text = memberInfo.Money.ToString(CultureInfo.CurrentCulture);
+           txtPoints.Text = memberInfo.Points.ToString();  
            txtPhoneNum.Text = memberInfo.PhoneNum;
-           birDate.Text = memberInfo.Birthday.ToString();
-           registDate.Text = memberInfo.RegistDate.ToString();
-           endDate.Text = memberInfo.EndDate.ToString();
+           birDate.Text = memberInfo.Birthday.ToString(CultureInfo.InvariantCulture);
+           registDate.Text = memberInfo.RegistDate.ToString(CultureInfo.InvariantCulture);
+           endDate.Text = memberInfo.EndDate.ToString(CultureInfo.InvariantCulture);
            rdoMan.Checked = memberInfo.Gender == "男";
            rdoWomen.Checked = memberInfo.Gender == "女";
-           txtDisount.Text = memberInfo.Discount.ToString();
+           txtDisount.Text = memberInfo.Discount.ToString(CultureInfo.InvariantCulture);
            
         }
 
@@ -75,10 +76,12 @@ namespace UI
             {
                 this.DialogResult = DialogResult.OK;
             }
-            else
+            if (updateRes == 0)
             {
                 this.DialogResult = DialogResult.No;
+
             }
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

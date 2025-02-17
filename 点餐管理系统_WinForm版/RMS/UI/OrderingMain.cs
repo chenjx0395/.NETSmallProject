@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -44,7 +37,7 @@ namespace UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnMemmber_Click(object sender, EventArgs e)
+        private void btnMember_Click(object sender, EventArgs e)
         {
             var memberManager = new MemberManager();
             memberManager.Show();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
 using BLL;
 using Model;
@@ -48,8 +47,8 @@ namespace UI
             usernameTextBox.Text = dataGridViewRow.Cells[1].Value.ToString();
             passwordTextBox3.Text = dataGridViewRow.Cells[2].Value.ToString();
             realnameTextBox.Text = dataGridViewRow.Cells[3].Value.ToString();
-            positionRadioButton1.Checked = dataGridViewRow.Cells[4].Value.ToString() == "员工" ? true : false;
-            positionRadioButton2.Checked = dataGridViewRow.Cells[4].Value.ToString() == "经理" ? true : false;
+            positionRadioButton1.Checked = dataGridViewRow.Cells[4].Value.ToString() == "员工" ;
+            positionRadioButton2.Checked = dataGridViewRow.Cells[4].Value.ToString() == "经理";
         }
         /// <summary>
         /// 新增员工
@@ -74,7 +73,7 @@ namespace UI
         {
             if (updateRes == 1)
             {
-                MessageBox.Show($"{msg}成功");
+                MessageBox.Show($@"{msg}成功");
                 LoadData();
                 // 清空文本框
                 userIdTextBox.Text = "";
@@ -85,7 +84,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show($"{msg}失败");
+                MessageBox.Show($@"{msg}失败");
             }
         }
 
@@ -147,7 +146,7 @@ namespace UI
         {
             if (string.IsNullOrWhiteSpace(userIdTextBox.Text))
             {
-                MessageBox.Show("请先选择要操作员工");
+                MessageBox.Show(@"请先选择要操作员工");
                 return -1;
             }
             var id = 0;
@@ -157,7 +156,8 @@ namespace UI
             }
             catch (Exception e)
             {
-                MessageBox.Show("系统异常");
+                MessageBox.Show(@"系统异常");
+                Console.WriteLine(e.Message);
             }
             return id;
         }
