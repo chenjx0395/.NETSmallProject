@@ -81,6 +81,18 @@
     <Compile Include="OrderingMain.Designer.cs">
       <DependentUpon>OrderingMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="CategoryInfoInsertOrUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryInfoInsertOrUpdate.Designer.cs">
+      <DependentUpon>CategoryInfoInsertOrUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductManager.Designer.cs">
+      <DependentUpon>ProductManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderingMain.resx">
       <DependentUpon>OrderingMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryInfoInsertOrUpdate.resx">
+      <DependentUpon>CategoryInfoInsertOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductManager.resx">
+      <DependentUpon>ProductManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>

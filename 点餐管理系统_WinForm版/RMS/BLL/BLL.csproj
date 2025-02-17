@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryInfoBLL.cs" />
     <Compile Include="MemberInfoBLL.cs" />
     <Compile Include="MemberTypeBLL.cs" />
     <Compile Include="OrderingBLL.cs" />
+    <Compile Include="ProductInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBLL.cs" />
   </ItemGroup>

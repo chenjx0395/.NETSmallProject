@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -18,7 +15,7 @@ namespace UI
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new OrderingLogin());
             // TODO 生产环境测试界面使用
-            Application.Run(new MemberManager());
+            Application.Run(new ProductManager());
         }
     }
 }
