@@ -51,6 +51,7 @@
     <Compile Include="MemberTypeDAL.cs" />
     <Compile Include="ProductInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomInfoDAL.cs" />
     <Compile Include="SQLiteHelper.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>

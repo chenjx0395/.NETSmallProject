@@ -144,7 +144,6 @@
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuStrip1.BackgroundImage")));
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -327,11 +326,11 @@
             // 
             // tabControl
             // 
-            this.tabControl.Location = new System.Drawing.Point(6, 216);
+            this.tabControl.Location = new System.Drawing.Point(6, 6);
             this.tabControl.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1314, 590);
+            this.tabControl.Size = new System.Drawing.Size(1314, 800);
             this.tabControl.TabIndex = 0;
             // 
             // dataGridView1
@@ -448,7 +447,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
