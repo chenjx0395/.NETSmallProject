@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SQLite;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Model;
 using Model.DTO;
 
@@ -9,6 +10,30 @@ namespace DAL
     public class MemberInfoDAL
     {
 
+        public int UpdateMemberInfo(MemberInfo memberInfo)
+        {
+            string sql = @"update MemberInfo 
+                            set mname = @mname, gender = @gender, type = @type, discount = @discount, 
+                                money = @money, points = @points, birthday = @birthday, 
+                                phoneNum = @phoneNum, registDate = @registDate, endDate = @endDate 
+                            where mid = @mid;";
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@mid", memberInfo.Mid),
+                new SQLiteParameter("@mname", memberInfo.Mname),
+                new SQLiteParameter("@gender", memberInfo.Gender),
+                new SQLiteParameter("@type", memberInfo.Type),
+                new SQLiteParameter("@discount", memberInfo.Discount),
+                new SQLiteParameter("@money", memberInfo.Money),
+                new SQLiteParameter("@points", memberInfo.Points),
+                new SQLiteParameter("@birthday", memberInfo.Birthday),
+                new SQLiteParameter("@phoneNum", memberInfo.PhoneNum),
+                new SQLiteParameter("@registDate", memberInfo.RegistDate),
+                new SQLiteParameter("@endDate", memberInfo.EndDate)
+            };
+            return SqLiteHelper.ExecuteNonQuery(sql, parameters);
+        }
+        
         public DataTable LikeGetMemberInfoByName(string name)
         {
             string slq = @"select * from MemberInfo where mname like @name";

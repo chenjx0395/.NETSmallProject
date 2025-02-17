@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BLL;
+using Model;
 
 namespace UI
 {
     public partial class MemberManager : Form
     {
-        private MemberInfoBLL _memberInfoBLL = new MemberInfoBLL();
+        private readonly MemberInfoBLL _memberInfoBLL = new MemberInfoBLL();
         private int _pageIndex = 1;
         private int _pageSize = 5;
         private int _total = 0;
+        
+        /// <summary>
+        /// 会员更新传递当前选中的会员数据给更新窗口
+        /// </summary>
+        public event Action<MemberInfo> MemberUpdateEvent;  
 
         public MemberManager()
         {
@@ -165,6 +171,45 @@ namespace UI
                 dgvMemmber.DataSource = _memberInfoBLL.LikeGetMemberInfoByName(textBox1.Text);
             }
                 
+        }
+
+        private void btnUpdateMember_Click(object sender, EventArgs e)
+        {
+            //绑定事件
+            var memberUpdate = new MemberUpdate();
+            MemberUpdateEvent += memberUpdate.LoadMemberInfoShow;
+            // 构建用户对象
+            if (dgvMemmber.CurrentRow == null)
+            {
+                Console.WriteLine("请先选择要修改的会员");
+                return;
+            }
+            var rowData = dgvMemmber.CurrentRow.Cells;
+            var memberInfo = new MemberInfo
+            {
+                Mid = Convert.ToInt32(rowData[0].Value),
+                Mname = rowData[1].Value.ToString(),
+                Gender = rowData[2].Value.ToString(),
+                Type = Convert.ToInt32(rowData[3].Value),
+                Discount = Convert.ToDouble(rowData[4].Value),
+                Money = Convert.ToDouble(rowData[5].Value),
+                Points = Convert.ToInt32(rowData[6].Value),
+                Birthday = Convert.ToDateTime(rowData[7].Value),
+                PhoneNum = rowData[8].Value.ToString(),
+                RegistDate = Convert.ToDateTime(rowData[9].Value),
+                EndDate = Convert.ToDateTime(rowData[10].Value),
+            };
+            MemberUpdateEvent?.Invoke(memberInfo);
+            var dialogResult = memberUpdate.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                MessageBox.Show("修改会员信息成功");
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("修改会员信息失败");
+            }
         }
     }
 }

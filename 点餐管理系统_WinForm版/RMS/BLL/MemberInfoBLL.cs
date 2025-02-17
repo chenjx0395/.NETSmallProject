@@ -44,6 +44,12 @@ namespace BLL
             return MemberInfoDal.LikeGetMemberInfoByName(name);
         }
 
+        public int UpdateMemberInfo(MemberInfo memberInfo)
+        {
+            return MemberInfoDal.UpdateMemberInfo(memberInfo);
+        }
+
+
 
     }
 }

@@ -3,7 +3,7 @@
 namespace Model
 {
     //会员信息
-    public class MemberInfo
+    public class MemberInfo 
     {
         public int Mid { get; set; }
         public string Mname { get; set; }
