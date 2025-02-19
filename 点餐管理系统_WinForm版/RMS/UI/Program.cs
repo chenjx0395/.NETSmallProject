@@ -13,9 +13,9 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new OrderingLogin());
+            Application.Run(new OrderingLogin());
             // TODO 生产环境测试界面使用
-            Application.Run(new OrderingMain());
+            // Application.Run(new OrderingMain());
         }
     }
 }

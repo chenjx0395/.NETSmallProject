@@ -398,6 +398,7 @@
             this.btnCategory.Size = new System.Drawing.Size(196, 174);
             this.btnCategory.TabIndex = 63;
             this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // imageList1
             // 

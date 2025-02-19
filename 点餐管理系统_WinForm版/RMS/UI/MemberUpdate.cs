@@ -75,11 +75,12 @@ namespace UI
             if (updateRes > 0)
             {
                 this.DialogResult = DialogResult.OK;
+                return;
             }
             if (updateRes == 0)
             {
                 this.DialogResult = DialogResult.No;
-
+                return;
             }
             DialogResult = DialogResult.Cancel;
         }

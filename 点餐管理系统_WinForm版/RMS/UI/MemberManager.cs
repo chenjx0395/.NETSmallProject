@@ -11,7 +11,7 @@ namespace UI
         private readonly MemberInfoBLL _memberInfoBLL = new MemberInfoBLL();
         private int _pageIndex = 1;
         private int _pageSize = 5;
-        private int _total = 0;
+        private int _total ;
         
         /// <summary>
         /// 会员更新传递当前选中的会员数据给更新窗口
@@ -23,10 +23,10 @@ namespace UI
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             LoadData();
-            bindComboBox();
+            BindComboBox();
         }
 
-        private void bindComboBox()
+        private void BindComboBox()
         {
             // 创建分页数据
             List<KeyValuePair<string, int>> pageItems = new List<KeyValuePair<string, int>>
@@ -47,9 +47,9 @@ namespace UI
         private void LoadData()
         {
             // 填充分页数据
-            var queryMemberDTO = _memberInfoBLL.PagingQuery(_pageIndex, _pageSize);
-            dgvMemmber.DataSource = queryMemberDTO.MemberInfos;
-            _total = queryMemberDTO.PageCount;
+            var queryMemberDto = _memberInfoBLL.PagingQuery(_pageIndex, _pageSize);
+            dgvMemmber.DataSource = queryMemberDto.MemberInfos;
+            _total = queryMemberDto.PageCount;
             // 显示分页信息
             label2.Text = _pageIndex.ToString();
             label4.Text = _total.ToString();
@@ -59,7 +59,7 @@ namespace UI
         {
         }
 
-        private void MemberManager_Load(object sender, System.EventArgs e)
+        private void MemberManager_Load(object sender, EventArgs e)
         {
         }
 
@@ -68,11 +68,11 @@ namespace UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, System.EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (_pageIndex == 1)
             {
-                MessageBox.Show("已经是第一页了");
+                MessageBox.Show(@"已经是第一页了");
                 return;
             }
 
@@ -85,11 +85,11 @@ namespace UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, System.EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (_pageIndex == _total)
             {
-                MessageBox.Show("已经是最后一页了");
+                MessageBox.Show(@"已经是最后一页了");
                 return;
             }
 
@@ -97,7 +97,7 @@ namespace UI
             LoadData();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _pageSize = ((KeyValuePair<string, int>)comboBox1.SelectedItem).Value;
             _pageIndex = 1;
@@ -116,13 +116,13 @@ namespace UI
             var dialogResult = memberAdd.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                MessageBox.Show("新增会员成功");
+                MessageBox.Show(@"新增会员成功");
                 _pageIndex = _total + 1;
                 LoadData();
             }
             else
             {
-                MessageBox.Show("新增会员失败");
+                MessageBox.Show(@"新增会员失败");
             }
         }
 
@@ -131,25 +131,25 @@ namespace UI
             //获取待删除会员的ID
             if (dgvMemmber.CurrentRow == null)
             {
-                Console.WriteLine("请先选择要删除的会员");
+                Console.WriteLine(@"请先选择要删除的会员");
                 return;
             }
 
-            var mid = Convert.ToInt32(dgvMemmber.CurrentRow.Cells[0].Value);
-            foreach (DataGridViewCell VARIABLE in dgvMemmber.CurrentRow.Cells)
+            var id = Convert.ToInt32(dgvMemmber.CurrentRow.Cells[0].Value);
+            foreach (DataGridViewCell variable in dgvMemmber.CurrentRow.Cells)
             {
-                Console.WriteLine(VARIABLE.Value);
+                Console.WriteLine(variable.Value);
             }
 
-            var deleteRes = _memberInfoBLL.DeleteMemberInfoById(mid);
+            var deleteRes = _memberInfoBLL.DeleteMemberInfoById(id);
             if (deleteRes == 1)
             {
-                MessageBox.Show("删除会员成功");
+                MessageBox.Show(@"删除会员成功");
                 LoadData();
             }
             else
             {
-                MessageBox.Show("删除会员失败");
+                MessageBox.Show(@"删除会员失败");
             }
         }
 
@@ -162,15 +162,9 @@ namespace UI
         private void button5_Click(object sender, EventArgs e)
         {
             // 如果输入框的文本可以转换为整型,代表更加ID查询会员
-            if (int.TryParse(textBox1.Text, out int mid))
-            {
-                dgvMemmber.DataSource = _memberInfoBLL.GetMemberInfoById(mid);
-            }
-            else
-            {
-                dgvMemmber.DataSource = _memberInfoBLL.LikeGetMemberInfoByName(textBox1.Text);
-            }
-                
+            dgvMemmber.DataSource = int.TryParse(textBox1.Text, out var id) 
+                ? _memberInfoBLL.GetMemberInfoById(id) 
+                : _memberInfoBLL.LikeGetMemberInfoByName(textBox1.Text);
         }
 
         private void btnUpdateMember_Click(object sender, EventArgs e)
@@ -181,7 +175,7 @@ namespace UI
             // 构建用户对象
             if (dgvMemmber.CurrentRow == null)
             {
-                Console.WriteLine("请先选择要修改的会员");
+                Console.WriteLine(@"请先选择要修改的会员");
                 return;
             }
             var rowData = dgvMemmber.CurrentRow.Cells;
@@ -201,14 +195,15 @@ namespace UI
             };
             MemberUpdateEvent?.Invoke(memberInfo);
             var dialogResult = memberUpdate.ShowDialog();
-            if (dialogResult == DialogResult.OK)
+            //TODO 存在逻辑错误,先保证测试成功
+            if (dialogResult == DialogResult.OK )
             {
-                MessageBox.Show("修改会员信息成功");
+                MessageBox.Show(@"修改会员信息成功");
                 LoadData();
             }
             else
             {
-                MessageBox.Show("修改会员信息失败");
+                MessageBox.Show(@"修改会员信息失败");
             }
         }
     }

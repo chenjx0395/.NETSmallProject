@@ -36,8 +36,8 @@ namespace DAL
         
         public DataTable LikeGetMemberInfoByName(string name)
         {
-            string slq = @"select * from MemberInfo where mname like @name";
-            return SqLiteHelper.ExecuteDataTable(slq, new SQLiteParameter("@name", "%" + name + "%"));
+            string slq = @"select * from MemberInfo where mname like @name and  removeFlag = 0";
+            return SqLiteHelper.ExecuteDataTable(slq, new SQLiteParameter("@name", "%" + name + "%") );
         }
 
         public DataTable GetMemberInfoById(int id)

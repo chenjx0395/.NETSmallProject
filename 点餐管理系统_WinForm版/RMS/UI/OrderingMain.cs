@@ -60,7 +60,12 @@ namespace UI
             var memberManager = new MemberManager();
             memberManager.Show();
         }
-        
-        
+
+        //进入商品管理界面
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            var productManager = new ProductManager();
+            productManager.Show();
+        }
     }
 }
