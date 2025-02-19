@@ -7,46 +7,38 @@ namespace BLL
 {
     public class MemberInfoBLL
     {
-        private readonly MemberInfoDAL MemberInfoDal = new MemberInfoDAL();
+        private readonly MemberInfoDAL _memberInfoDal = new MemberInfoDAL();
 
         public int DeleteMemberInfoById(int id)
         {
-            return MemberInfoDal.DeleteMemberInfoById(id);
+            return _memberInfoDal.DeleteMemberInfoById(id);
         }
         
         public QueryMemberDTO PagingQuery(int pageIndex, int pageSize)
         {
-            return MemberInfoDal.PagingQuery(pageIndex, pageSize);
+            return _memberInfoDal.PagingQuery(pageIndex, pageSize);
         }
-
-        /// <summary>
-        /// 插入会员数据
-        /// </summary>
-        /// <param name="memberInfo"></param>
-        /// <returns></returns>
+        
+        //插入会员数据
         public int InsertMemberInfo(MemberInfo memberInfo)
         {
-            return MemberInfoDal.InsertMemberInfo(memberInfo);
+            return _memberInfoDal.InsertMemberInfo(memberInfo);
         }
 
         public DataTable GetMemberInfoById(int id)
         {
-            return MemberInfoDal.GetMemberInfoById(id);
+            return _memberInfoDal.GetMemberInfoById(id);
         }
-
-        /// <summary>
-        /// 根据会员名称模糊查询
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        
+        //根据会员名称模糊查询
         public DataTable LikeGetMemberInfoByName(string name)
         {
-            return MemberInfoDal.LikeGetMemberInfoByName(name);
+            return _memberInfoDal.LikeGetMemberInfoByName(name);
         }
 
         public int UpdateMemberInfo(MemberInfo memberInfo)
         {
-            return MemberInfoDal.UpdateMemberInfo(memberInfo);
+            return _memberInfoDal.UpdateMemberInfo(memberInfo);
         }
 
 

@@ -46,7 +46,8 @@ namespace UI
 
             this.DialogResult = result ? DialogResult.OK : DialogResult.No;
         }
-        //获取商品管理页面修改类别操作触发后的类别信息
+        
+        //获取商品管理页面修改类别操作触发后的类别信息事件
         public void GetUpdateCategoryInfo(object sender, EventArgs e)
         {
             _isUpdate = true;

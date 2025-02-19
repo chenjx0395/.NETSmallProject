@@ -54,14 +54,14 @@ namespace UI
             ShowDateTimeNow();
         }
 
-        //进入会员管理界面
+        //进入会员管理界面事件
         private void btnMember_Click(object sender, EventArgs e)
         {
             var memberManager = new MemberManager();
             memberManager.Show();
         }
 
-        //进入商品管理界面
+        //进入商品管理界面事件
         private void btnCategory_Click(object sender, EventArgs e)
         {
             var productManager = new ProductManager();

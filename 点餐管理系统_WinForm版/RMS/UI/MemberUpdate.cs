@@ -21,15 +21,15 @@ namespace UI
         {
             
         }
-        /// <summary>
-        /// 查询会员类型数据用于填充下拉框
-        /// </summary>
+        //查询会员类型数据用于填充下拉框
         private void LoadMemberTypeData()
         {
             cmbMemType.DataSource = _memberTypeBll.GetMemberTypeList();
             cmbMemType.DisplayMember = "tname";
             cmbMemType.ValueMember = "tid";
         }
+        
+        // 加载待修改会员信息
         public void LoadMemberInfoShow(MemberInfo memberInfo)
         {
            txtMid.Text = memberInfo.Mid.ToString();
@@ -46,12 +46,8 @@ namespace UI
            txtDisount.Text = memberInfo.Discount.ToString(CultureInfo.InvariantCulture);
            
         }
-
-        /// <summary>
-        /// 修改会员信息
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
+        //修改会员信息事件
         private void btnOk_Click(object sender, EventArgs e)
         {
            

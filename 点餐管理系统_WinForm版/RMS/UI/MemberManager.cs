@@ -13,9 +13,7 @@ namespace UI
         private int _pageSize = 5;
         private int _total ;
         
-        /// <summary>
-        /// 会员更新传递当前选中的会员数据给更新窗口
-        /// </summary>
+        //定义更新会员事件，传递会员信息
         public event Action<MemberInfo> MemberUpdateEvent;  
 
         public MemberManager()
@@ -26,6 +24,7 @@ namespace UI
             BindComboBox();
         }
 
+        //绑定会员类型下拉框信息
         private void BindComboBox()
         {
             // 创建分页数据
@@ -44,6 +43,7 @@ namespace UI
             comboBox1.SelectedIndex = 1;
         }
 
+        //加载会员数据
         private void LoadData()
         {
             // 填充分页数据
@@ -63,11 +63,7 @@ namespace UI
         {
         }
 
-        /// <summary>
-        /// 上一页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //上一页
         private void button2_Click(object sender, EventArgs e)
         {
             if (_pageIndex == 1)
@@ -79,12 +75,8 @@ namespace UI
             _pageIndex -= 1;
             LoadData();
         }
-
-        /// <summary>
-        /// 下一页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
+        //下一页
         private void button3_Click(object sender, EventArgs e)
         {
             if (_pageIndex == _total)
@@ -97,19 +89,15 @@ namespace UI
             LoadData();
         }
 
+        //切换每页显示数事件
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _pageSize = ((KeyValuePair<string, int>)comboBox1.SelectedItem).Value;
             _pageIndex = 1;
             LoadData();
         }
-
-        /// <summary>
-        /// 打开添加会员界面
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <exception cref="NotImplementedException"></exception>
+        
+        //添加会员事件
         private void btnAddMemMber_Click(object sender, EventArgs e)
         {
             var memberAdd = new MemberAdd();
@@ -126,6 +114,7 @@ namespace UI
             }
         }
 
+        //删除会员事件
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //获取待删除会员的ID
@@ -152,13 +141,8 @@ namespace UI
                 MessageBox.Show(@"删除会员失败");
             }
         }
-
-        /// <summary>
-        /// 检索会员
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <exception cref="NotImplementedException"></exception>
+        
+        //检索会员事件
         private void button5_Click(object sender, EventArgs e)
         {
             // 如果输入框的文本可以转换为整型,代表更加ID查询会员
@@ -167,6 +151,7 @@ namespace UI
                 : _memberInfoBLL.LikeGetMemberInfoByName(textBox1.Text);
         }
 
+        //修改会员事件
         private void btnUpdateMember_Click(object sender, EventArgs e)
         {
             //绑定事件
