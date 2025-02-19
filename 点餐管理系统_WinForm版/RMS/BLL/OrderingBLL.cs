@@ -5,12 +5,8 @@ namespace BLL
 {
     public class OrderingBLL
     {
-        /// <summary>
-        /// 点餐界面登录
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns>0-账号密码错误</returns>
+
+        //点餐界面登录
         public int Login(string username, string password)
         {
             var userDAL = new UserDAL();

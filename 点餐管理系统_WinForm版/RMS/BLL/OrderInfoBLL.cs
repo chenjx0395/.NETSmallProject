@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using System.Data;
+using DAL;
 using Model;
 
 namespace BLL
@@ -15,5 +16,23 @@ namespace BLL
         {
             return _orderInfoDAL.InsertOrderDesk(orderId, deskId);
         }
+
+        public DataTable GetOrderProductByOrderId(int orderId)
+        {
+            return _orderInfoDAL.GetOrderProductByOrderId(orderId);
+        }
+
+        public int InsertOrderProduct(OrderProduct orderProduct)
+        {
+            return _orderInfoDAL.InsertOrderProduct(orderProduct);
+        }
+
+        public int UpdateOrderProductCount(OrderProduct orderProduct)
+        {
+            return _orderInfoDAL.UpdateOrderProductCount(orderProduct);
+        }
+
+
+
     }
 }

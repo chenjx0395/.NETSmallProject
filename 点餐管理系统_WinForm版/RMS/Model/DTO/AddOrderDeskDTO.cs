@@ -9,5 +9,6 @@ namespace Model.DTO
         public int RoomMinConsumption { get; set; }
         public int RoomId { get; set; }
         public int DeskId { get; set; }
+        public int OrderId { get; set; }
     }
 }

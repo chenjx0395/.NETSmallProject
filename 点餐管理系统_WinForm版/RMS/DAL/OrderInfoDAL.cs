@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using Model;
 
@@ -31,6 +32,40 @@ namespace DAL
                 new SQLiteParameter("@deskId", deskId)
             };
             return SqLiteHelper.ExecuteNonQuery(sql, parameters);
+        }
+            
+        // 根据订单ID获取相关商品信息
+        public DataTable GetOrderProductByOrderId(int orderId)
+        {
+            const string sql =
+                @"select p.proid , proname , o.ProCount, proprice, prounit, 
+                        proprice*o.ProCount totalPrice , c.CatName, o.SubTime
+                                from ProductInfo p 
+                                join CategoryInfo c on p.CatId = c.CatId
+                                join Order_Product o on p.ProId = o.ProId
+                                where o.OrderId = @orderId and o.DelFlag = 0;";
+            return SqLiteHelper.ExecuteDataTable(sql, new SQLiteParameter("@orderId", orderId));
+        }
+        
+        //添加商品到订单中
+        public int InsertOrderProduct(OrderProduct orderProduct)
+        {
+            const string sql = @"insert into Order_Product(OrderId, ProId, ProCount, SubTime) 
+                                    values (@OrderId, @ProId, @ProCount, @SubTime);";
+            return SqLiteHelper.ExecuteNonQuery(sql, new[]
+            {
+                new SQLiteParameter("@OrderId", orderProduct.OrderId),
+                new SQLiteParameter("@ProId", orderProduct.ProId),
+                new SQLiteParameter("@ProCount", orderProduct.ProCount),
+                new SQLiteParameter("@SubTime", orderProduct.SubTime)
+            });
+        }
+        // 修改订单商品表的商品数量
+        public int UpdateOrderProductCount(OrderProduct orderProduct)
+        {
+            const string sql = @"update Order_Product set ProCount = ProCount+1 where OrderId = @OrderId and ProId = @ProId;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@OrderId", orderProduct.OrderId),
+                new SQLiteParameter("@ProId", orderProduct.ProId));
         }
     }
 }
