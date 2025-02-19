@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryInfo.cs" />
+    <Compile Include="DeskInfo.cs" />
+    <Compile Include="DTO\AddOrderDeskDTO.cs" />
     <Compile Include="DTO\QueryMemberDTO.cs" />
     <Compile Include="MemberInfo.cs" />
     <Compile Include="ProductInfo.cs" />

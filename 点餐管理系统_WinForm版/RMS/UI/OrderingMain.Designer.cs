@@ -332,6 +332,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1314, 800);
             this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -417,6 +418,7 @@
             this.btnBiling.Size = new System.Drawing.Size(196, 174);
             this.btnBiling.TabIndex = 62;
             this.btnBiling.UseVisualStyleBackColor = true;
+            this.btnBiling.Click += new System.EventHandler(this.btnBiling_Click);
             // 
             // OrderingMain
             // 

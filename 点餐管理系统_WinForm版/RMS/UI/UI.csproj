@@ -69,6 +69,12 @@
     <Compile Include="MemberUpdate.Designer.cs">
       <DependentUpon>MemberUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderDeskAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDeskAdd.Designer.cs">
+      <DependentUpon>OrderDeskAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderingLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MemberUpdate.resx">
       <DependentUpon>MemberUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDeskAdd.resx">
+      <DependentUpon>OrderDeskAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderingLogin.resx">
       <DependentUpon>OrderingLogin.cs</DependentUpon>
