@@ -147,6 +147,8 @@ namespace UI
             }
             AddOrderDeskEvent?.Invoke(this,addOrderDeskDTO);
             _orderDeskAdd.ShowDialog();
+            //开单后刷新桌面界面
+            LoadDeskInfoByRoomId();
         }
     }
 }

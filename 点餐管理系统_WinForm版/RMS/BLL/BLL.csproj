@@ -45,6 +45,7 @@
     <Compile Include="DeskInfoBLL.cs" />
     <Compile Include="MemberInfoBLL.cs" />
     <Compile Include="MemberTypeBLL.cs" />
+    <Compile Include="OrderInfoBLL.cs" />
     <Compile Include="OrderingBLL.cs" />
     <Compile Include="ProductInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

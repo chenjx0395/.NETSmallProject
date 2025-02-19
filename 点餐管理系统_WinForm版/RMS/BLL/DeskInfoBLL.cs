@@ -11,5 +11,11 @@ namespace BLL
             return _deskInfoDAL.GetDeskInfoByRoomId(roomId);
         }
 
+        public int UpdateDeskStateToUseById(int deskId)
+        {
+            return _deskInfoDAL.UpdateDeskStateToUseById(deskId);
+        }
+
+
     }
 }

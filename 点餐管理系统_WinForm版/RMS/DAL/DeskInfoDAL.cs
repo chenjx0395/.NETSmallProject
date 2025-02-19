@@ -13,5 +13,11 @@ namespace DAL
                     where DelFlag = 0 and roomid = @roomId;";
             return SqLiteHelper.ExecuteDataTable(sql, new SQLiteParameter("@roomId", roomId));
         }
+
+        public int UpdateDeskStateToUseById(int deskId)
+        {
+            const string sql = @"update DeskInfo set DeskState = 1 where DeskId = @ID and DelFlag = 0;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@ID", deskId));
+        }
     }
 }
