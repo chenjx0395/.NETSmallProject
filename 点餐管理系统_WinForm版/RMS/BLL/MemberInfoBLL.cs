@@ -41,6 +41,16 @@ namespace BLL
             return _memberInfoDal.UpdateMemberInfo(memberInfo);
         }
 
+        public MemberInfo GetMemberInfoByPhoneNum(string phoneNum)
+        {
+            return _memberInfoDal.GetMemberInfoByPhoneNum(phoneNum);
+        }
+
+        public int UpdateMemberInfoMoneyAndPoints(MemberInfo memberInfo)
+        {
+            return _memberInfoDal.UpdateMemberInfoMoneyAndPoints(memberInfo);
+        }
+
 
 
     }

@@ -19,5 +19,12 @@ namespace DAL
             const string sql = @"update DeskInfo set DeskState = 1 where DeskId = @ID and DelFlag = 0;";
             return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@ID", deskId));
         }
+        
+        //修改桌面状态，使其为空闲
+        public int UpdateDeskStateToFreeById(int deskId)
+        {
+            const string sql = @"update DeskInfo set DeskState = 0 where DeskId = @ID and DelFlag = 0;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@ID", deskId));
+        }
     }
 }

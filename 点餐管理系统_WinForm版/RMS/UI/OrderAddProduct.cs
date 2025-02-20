@@ -126,7 +126,18 @@ namespace UI
             //查询订单ID的商品ID的数量
             var productCount = _orderInfoBLL.GetProductCountByOrderIdAndProductId(_orderId, proId);
             //根据商品数量判断是删除还是减-
-            var res = productCount > 1 ? _orderInfoBLL.DecreaseProductCountByOrderIdAndProductId(_orderId, proId) : _orderInfoBLL.DeleteOrderProductByOrderIdAndProductId(_orderId, proId);
+            var res = 0;
+            if (productCount > 1)
+            {
+                res = _orderInfoBLL.DecreaseProductCountByOrderIdAndProductId(_orderId, proId);
+
+            }
+            else
+            {
+                res = _orderInfoBLL.DeleteOrderProductByOrderIdAndProductId(_orderId, proId);
+                _existenceProductId.Remove(proId);
+            }
+           
             if (res < 1)
             {
                 MessageBox.Show(@"删除该商品异常");

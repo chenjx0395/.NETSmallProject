@@ -109,5 +109,17 @@ namespace DAL
             return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@orderId", orderId),
                 new SQLiteParameter("@productId", productId));
         }
+        
+        // 修改订单状态，将其置为已结账状态
+        public int UpdateOrderState(OrderInfo orderInfo)
+        {
+            const string sql = @"update OrderInfo 
+                                    set OrderState = 1 , EndTime = @endTime , OrderMoney = @orderMoney , DisCount =  @disCount 
+                                    where OrderId = @orderId;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@orderId", orderInfo.OrderId),
+                new SQLiteParameter("@endTime", orderInfo.EndTime),
+                new SQLiteParameter("@orderMoney", orderInfo.OrderMoney),
+                new SQLiteParameter("@disCount", orderInfo.DisCount));
+        }
     }
 }

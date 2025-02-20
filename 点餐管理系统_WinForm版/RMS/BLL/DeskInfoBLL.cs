@@ -16,6 +16,10 @@ namespace BLL
             return _deskInfoDAL.UpdateDeskStateToUseById(deskId);
         }
 
+        public int UpdateDeskStateToFreeById(int deskId)
+        {
+            return _deskInfoDAL.UpdateDeskStateToFreeById(deskId);
+        }
 
     }
 }

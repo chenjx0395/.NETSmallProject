@@ -116,5 +116,43 @@ namespace DAL
                 PageCount = count
             };
         }
+        
+        // 根据手机号后4位查询会员信息
+        public MemberInfo GetMemberInfoByPhoneNum(string phoneNum)
+        {
+            const string sql = @"select mid,mname,money,discount 
+                                from MemberInfo 
+                                where phoneNum like @phoneNum and removeFlag = 0;";
+            var sqLiteDataReader = SqLiteHelper.ExecuteReader(sql, new SQLiteParameter("@phoneNum","_______" +phoneNum));
+            MemberInfo memberInfo = null;
+            if (sqLiteDataReader.Read())
+            {
+                memberInfo = new MemberInfo
+                {
+                    Mid = sqLiteDataReader.GetInt32(0),
+                    Mname = sqLiteDataReader.GetString(1),
+                    Money = sqLiteDataReader.GetDouble(2),
+                    Discount = sqLiteDataReader.GetDouble(3)
+                };
+
+            }
+            sqLiteDataReader.Close();
+            return memberInfo;
+        }
+        // 扣除余额，增加积分
+        public int UpdateMemberInfoMoneyAndPoints(MemberInfo memberInfo)
+        {
+            const string sql = @"update MemberInfo 
+                                    set money =  @money, points =  points + @points 
+                                    where mid = @mid and removeFlag = 0;";
+            SQLiteParameter[] parameters =
+            {
+                new SQLiteParameter("@money", memberInfo.Money),
+                new SQLiteParameter("@points", memberInfo.Points),
+                new SQLiteParameter("@mid", memberInfo.Mid)
+            };
+            return SqLiteHelper.ExecuteNonQuery(sql, parameters);
+        }
+        
     }
 }

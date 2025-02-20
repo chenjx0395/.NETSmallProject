@@ -99,6 +99,12 @@
     <Compile Include="CategoryInfoInsertOrUpdate.Designer.cs">
       <DependentUpon>CategoryInfoInsertOrUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderingPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderingPay.Designer.cs">
+      <DependentUpon>OrderingPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CategoryInfoInsertOrUpdate.resx">
       <DependentUpon>CategoryInfoInsertOrUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderingPay.resx">
+      <DependentUpon>OrderingPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductManager.resx">
       <DependentUpon>ProductManager.cs</DependentUpon>

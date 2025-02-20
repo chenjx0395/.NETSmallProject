@@ -193,5 +193,41 @@ namespace UI
             AddOrderProductEvent?.Invoke(this, addOrderDeskDTO);
             orderAddProduct.ShowDialog();
         }
+
+        //结账事件
+        private void btnJieZhang_Click(object sender, EventArgs e)
+        {
+            //判断是否选择了桌面
+            var tabPage = tabControl.SelectedTab;
+            var roomDataRow = tabPage.Tag as DataRow;
+            var listView = tabControl.SelectedTab.Controls[0] as ListView;
+            if (listView == null || listView.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show(@"请选择桌面后再操作");
+                return;
+            }
+            var deskRow = listView.SelectedItems[0].Tag as DataRow;
+            if (deskRow == null || Convert.ToInt32(deskRow["DeskState"]) == 0)
+            {
+                MessageBox.Show(@"请选择已开单的桌面");
+                return;
+            }
+            //获取选中餐桌的最新订单号
+            var deskId = Convert.ToInt32(deskRow["DeskId"]);
+            var orderId = _orderInfoBLL.GetOrderIdByDeskId(deskId);
+            var addOrderDeskDTO = new AddOrderDeskDTO()
+            {
+                DeskId = deskId,
+                OrderId = orderId,
+                RoomName = roomDataRow?["RoomName"].ToString(),
+                DeskName = deskRow["DeskName"].ToString()
+            };
+            //创建结账界面，调用事件
+            var orderingPay = new OrderingPay();
+            AddOrderProductEvent += orderingPay.GetOrderProductInfo;
+            AddOrderProductEvent?.Invoke(this, addOrderDeskDTO);
+            orderingPay.ShowDialog();
+            LoadDeskInfoByRoomId();
+        }
     }
 }

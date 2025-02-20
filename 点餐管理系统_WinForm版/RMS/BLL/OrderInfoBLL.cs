@@ -53,6 +53,11 @@ namespace BLL
             return _orderInfoDAL.DeleteOrderProductByOrderIdAndProductId(orderId, productId);
         }
 
+        public int UpdateOrderState(OrderInfo orderInfo)
+        {
+            return _orderInfoDAL.UpdateOrderState(orderInfo);
+        }
+
 
 
 

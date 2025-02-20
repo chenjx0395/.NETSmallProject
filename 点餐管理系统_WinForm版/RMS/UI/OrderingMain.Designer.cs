@@ -83,6 +83,7 @@
             this.btnJieZhang.Size = new System.Drawing.Size(196, 174);
             this.btnJieZhang.TabIndex = 61;
             this.btnJieZhang.UseVisualStyleBackColor = true;
+            this.btnJieZhang.Click += new System.EventHandler(this.btnJieZhang_Click);
             // 
             // timer1
             // 
