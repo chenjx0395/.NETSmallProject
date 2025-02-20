@@ -105,5 +105,34 @@ namespace UI
             }
             LoadOrderProductInfo();
         }
+        
+        // 退菜事件
+        private void btnDeleteRorderPro_Click(object sender, EventArgs e)
+        {
+            var temp = dgvROrderProduct.SelectedRows;
+            if (temp.Count <= 0 )
+            {
+                MessageBox.Show(@"没有商品了，请先选择商品吧");
+                return;
+            }
+            //获取退菜的Id
+            var selectedRow = dgvROrderProduct.SelectedRows[0];
+            if (selectedRow == null)
+            {
+                MessageBox.Show(@"请先选择需退菜的商品");
+                return;
+            }
+            var proId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            //查询订单ID的商品ID的数量
+            var productCount = _orderInfoBLL.GetProductCountByOrderIdAndProductId(_orderId, proId);
+            //根据商品数量判断是删除还是减-
+            var res = productCount > 1 ? _orderInfoBLL.DecreaseProductCountByOrderIdAndProductId(_orderId, proId) : _orderInfoBLL.DeleteOrderProductByOrderIdAndProductId(_orderId, proId);
+            if (res < 1)
+            {
+                MessageBox.Show(@"删除该商品异常");
+            }
+            //重新加载订单商品信息
+            LoadOrderProductInfo();
+        }
     }
 }

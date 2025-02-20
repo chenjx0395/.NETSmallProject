@@ -283,6 +283,7 @@ namespace UI
             this.btnDeleteRorderPro.TabIndex = 0;
             this.btnDeleteRorderPro.Text = "退菜";
             this.btnDeleteRorderPro.UseVisualStyleBackColor = false;
+            this.btnDeleteRorderPro.Click += new System.EventHandler(this.btnDeleteRorderPro_Click);
             // 
             // groupBox3
             // 

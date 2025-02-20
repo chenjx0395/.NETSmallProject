@@ -79,5 +79,35 @@ namespace DAL
 ";
             return Convert.ToInt32(SqLiteHelper.ExecuteScalar(sql, new SQLiteParameter("@deskId", deskId)));
         }
+        
+        // 查询指定订单的指定商品数量
+        public int GetProductCountByOrderIdAndProductId(int orderId, int productId)
+        {
+            const string sql = @"select ProCount 
+                                    from Order_Product 
+                                    where OrderId = @orderId and ProId = @productId and DelFlag = 0;";
+            SQLiteParameter[] parameters = new[]
+            {
+                new SQLiteParameter("@orderId", orderId),
+                new SQLiteParameter("@productId", productId)
+            };
+            return Convert.ToInt32(SqLiteHelper.ExecuteScalar(sql, parameters));
+        }
+        
+        // 减少一个数量，根据订单id和商品id
+        public int DecreaseProductCountByOrderIdAndProductId(int orderId, int productId)
+        {
+            const string sql = @"update Order_Product set ProCount = ProCount-1 where OrderId = @orderId and ProId = @productId and DelFlag = 0;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@orderId", orderId),
+                new SQLiteParameter("@productId", productId));
+        }
+        
+        // 删除订单的商品，根据订单id和商品id
+        public int DeleteOrderProductByOrderIdAndProductId(int orderId, int productId)
+        {
+            const string sql = @"update Order_Product set DelFlag = 1 where OrderId = @orderId and ProId = @productId and DelFlag = 0;";
+            return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@orderId", orderId),
+                new SQLiteParameter("@productId", productId));
+        }
     }
 }

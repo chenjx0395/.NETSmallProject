@@ -37,6 +37,23 @@ namespace BLL
             return _orderInfoDAL.GetOrderIdByDeskId(deskId);
         }
 
+        public int GetProductCountByOrderIdAndProductId(int orderId, int productId)
+        {
+            return _orderInfoDAL.GetProductCountByOrderIdAndProductId(orderId, productId);
+            
+        }
+
+        public int DecreaseProductCountByOrderIdAndProductId(int orderId, int productId)
+        {
+            return _orderInfoDAL.DecreaseProductCountByOrderIdAndProductId(orderId, productId);
+        }
+
+        public int DeleteOrderProductByOrderIdAndProductId(int orderId, int productId)
+        {
+            return _orderInfoDAL.DeleteOrderProductByOrderIdAndProductId(orderId, productId);
+        }
+
+
 
 
     }
