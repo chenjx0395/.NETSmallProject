@@ -67,5 +67,17 @@ namespace DAL
             return SqLiteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@OrderId", orderProduct.OrderId),
                 new SQLiteParameter("@ProId", orderProduct.ProId));
         }
+        
+        // 查询此桌面最新的订单号
+        public int GetOrderIdByDeskId(int deskId)
+        {
+            const string sql = @"select OrderId 
+                                    from Order_Desk 
+                                    where  DeskId = @deskId
+                                    order by OrderId desc 
+                                    limit 0 , 1;
+";
+            return Convert.ToInt32(SqLiteHelper.ExecuteScalar(sql, new SQLiteParameter("@deskId", deskId)));
+        }
     }
 }

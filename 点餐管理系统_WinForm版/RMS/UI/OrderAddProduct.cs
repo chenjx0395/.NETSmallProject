@@ -21,7 +21,6 @@ namespace UI
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            LoadOrderProductInfo();
             LoadProductList();
             LoadProductListByCategory();
         }
@@ -39,6 +38,7 @@ namespace UI
             label9.Text = addOrderDeskDTO.DeskName;
             label10.Text = addOrderDeskDTO.RoomName;
             _orderId = addOrderDeskDTO.OrderId;
+            LoadOrderProductInfo();
         }
 
         //加载当前订单的商品信息

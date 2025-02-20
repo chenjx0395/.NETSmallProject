@@ -98,6 +98,7 @@
             this.btnMoney.Size = new System.Drawing.Size(196, 174);
             this.btnMoney.TabIndex = 65;
             this.btnMoney.UseVisualStyleBackColor = true;
+            this.btnMoney.Click += new System.EventHandler(this.btnMoney_Click);
             // 
             // label8
             // 

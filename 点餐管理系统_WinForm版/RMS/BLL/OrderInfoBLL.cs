@@ -32,6 +32,11 @@ namespace BLL
             return _orderInfoDAL.UpdateOrderProductCount(orderProduct);
         }
 
+        public int GetOrderIdByDeskId(int deskId)
+        {
+            return _orderInfoDAL.GetOrderIdByDeskId(deskId);
+        }
+
 
 
     }
