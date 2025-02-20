@@ -11,13 +11,20 @@ namespace UI
         private readonly RoomInfoBLL _roomInfoBLL = new RoomInfoBLL();
         private readonly DeskInfoBLL _deskInfoBLL = new DeskInfoBLL();
         private readonly OrderInfoBLL _orderInfoBLL = new OrderInfoBLL();
+        // 窗口对象，用于绑定事件
         private readonly OrderDeskAdd _orderDeskAdd = new OrderDeskAdd();
-        
+        private readonly OrderAddProduct _orderAddProduct = new OrderAddProduct();
+        private readonly OrderingPay _orderingPay = new OrderingPay();
+
 
         //开单事件，传递桌面信息
         private event EventHandler AddOrderDeskEvent;
+
         //添加订单消费事件，传递桌面以及订单信息
         private event EventHandler AddOrderProductEvent;
+
+        //添加结账事件，传递桌面和订单信息
+        private event EventHandler AddOrderPayEvent;
 
         public OrderingMain()
         {
@@ -27,6 +34,8 @@ namespace UI
             LoadDeskInfoByRoomId();
             //绑定开单传递桌面信息事件
             AddOrderDeskEvent += _orderDeskAdd.GetOrderDeskInfo;
+            AddOrderProductEvent += _orderAddProduct.GetOrderAddProductInfo;
+            AddOrderPayEvent += _orderingPay.GetOrderProductInfo;
         }
 
         private void OrderingMain_Load(object sender, EventArgs e)
@@ -153,7 +162,6 @@ namespace UI
                 MessageBox.Show(@"此桌面被使用中，无法开单");
                 return;
             }
-
             AddOrderDeskEvent?.Invoke(this, addOrderDeskDTO);
             _orderDeskAdd.ShowDialog();
             //开单后刷新桌面界面
@@ -171,12 +179,14 @@ namespace UI
                 MessageBox.Show(@"请选择桌面后再操作");
                 return;
             }
+
             var deskRow = listView.SelectedItems[0].Tag as DataRow;
             if (deskRow == null || Convert.ToInt32(deskRow["DeskState"]) == 0)
             {
                 MessageBox.Show(@"请选择已开单的桌面");
                 return;
             }
+
             //获取选中餐桌的最新订单号
             var deskId = Convert.ToInt32(deskRow["DeskId"]);
             var orderId = _orderInfoBLL.GetOrderIdByDeskId(deskId);
@@ -188,10 +198,8 @@ namespace UI
                 DeskName = deskRow["DeskName"].ToString()
             };
             //创建订单添加商品页面，调用事件
-            var orderAddProduct = new OrderAddProduct();
-            AddOrderProductEvent += orderAddProduct.GetOrderAddProductInfo;
             AddOrderProductEvent?.Invoke(this, addOrderDeskDTO);
-            orderAddProduct.ShowDialog();
+            _orderAddProduct.ShowDialog();
         }
 
         //结账事件
@@ -206,12 +214,14 @@ namespace UI
                 MessageBox.Show(@"请选择桌面后再操作");
                 return;
             }
+
             var deskRow = listView.SelectedItems[0].Tag as DataRow;
             if (deskRow == null || Convert.ToInt32(deskRow["DeskState"]) == 0)
             {
                 MessageBox.Show(@"请选择已开单的桌面");
                 return;
             }
+
             //获取选中餐桌的最新订单号
             var deskId = Convert.ToInt32(deskRow["DeskId"]);
             var orderId = _orderInfoBLL.GetOrderIdByDeskId(deskId);
@@ -223,10 +233,8 @@ namespace UI
                 DeskName = deskRow["DeskName"].ToString()
             };
             //创建结账界面，调用事件
-            var orderingPay = new OrderingPay();
-            AddOrderProductEvent += orderingPay.GetOrderProductInfo;
-            AddOrderProductEvent?.Invoke(this, addOrderDeskDTO);
-            orderingPay.ShowDialog();
+            AddOrderPayEvent?.Invoke(this, addOrderDeskDTO);
+            _orderingPay.ShowDialog();
             LoadDeskInfoByRoomId();
         }
     }
