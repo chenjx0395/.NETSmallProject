@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common;
 
 namespace HospitalManagementSystem
 {
@@ -16,7 +17,32 @@ namespace HospitalManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            
+            // 启动时权限验证
+            try
+            {
+                new PermissionSyncService().ValidatePermissions();
+            }
+            catch (Exception ex)
+            {
+                // ReSharper disable once LocalizableElement
+                MessageBox.Show($"权限配置错误：\n{ex.Message}", @"系统启动失败", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            // Application.Run(new Login());
+            //TODO 测试使用
+            Application.Run(new MainPage());
+            
+            
+           
+               
+                
+          
+            
+
+            
         }
     }
 }
