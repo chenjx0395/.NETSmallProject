@@ -37,8 +37,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblPwd = new System.Windows.Forms.Label();
-            this.lblUname = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.txtUname = new System.Windows.Forms.TextBox();
@@ -70,8 +68,6 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.lblPwd);
-            this.panel2.Controls.Add(this.lblUname);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Controls.Add(this.txtPwd);
@@ -91,7 +87,7 @@
             this.button2.Location = new System.Drawing.Point(716, 501);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 96);
-            this.button2.TabIndex = 14;
+            this.button2.TabIndex = 1;
             this.button2.Text = "退出";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
@@ -103,33 +99,10 @@
             this.button1.Location = new System.Drawing.Point(348, 501);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 96);
-            this.button1.TabIndex = 13;
+            this.button1.TabIndex = 1;
             this.button1.Text = "登录";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblPwd
-            // 
-            this.lblPwd.AutoSize = true;
-            this.lblPwd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPwd.ForeColor = System.Drawing.Color.Red;
-            this.lblPwd.Location = new System.Drawing.Point(848, 368);
-            this.lblPwd.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblPwd.Name = "lblPwd";
-            this.lblPwd.Size = new System.Drawing.Size(127, 33);
-            this.lblPwd.TabIndex = 12;
-            this.lblPwd.Text = "label12";
-            // 
-            // lblUname
-            // 
-            this.lblUname.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblUname.ForeColor = System.Drawing.Color.Red;
-            this.lblUname.Location = new System.Drawing.Point(848, 242);
-            this.lblUname.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblUname.Name = "lblUname";
-            this.lblUname.Size = new System.Drawing.Size(200, 38);
-            this.lblUname.TabIndex = 11;
-            this.lblUname.Text = "label11";
             // 
             // pictureBox5
             // 
@@ -152,7 +125,7 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(358, 44);
-            this.txtPwd.TabIndex = 1;
+            this.txtPwd.TabIndex = 2;
             // 
             // txtUname
             // 
@@ -163,7 +136,7 @@
             this.txtUname.Margin = new System.Windows.Forms.Padding(6);
             this.txtUname.Name = "txtUname";
             this.txtUname.Size = new System.Drawing.Size(358, 44);
-            this.txtUname.TabIndex = 1;
+            this.txtUname.TabIndex = 3;
             // 
             // label9
             // 
@@ -212,8 +185,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblPwd;
-        private System.Windows.Forms.Label lblUname;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.TextBox txtUname;

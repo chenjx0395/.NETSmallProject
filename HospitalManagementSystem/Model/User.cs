@@ -10,7 +10,7 @@ namespace Model
         
         public string Password { get; set; }
 
-        public char? Sex { get; set; }
+        public string Sex { get; set; }
 
         public string Address { get; set; }
 
@@ -23,5 +23,6 @@ namespace Model
         public DateTime UpdateTime { get; set; }
 
         public bool IsRemove { get; set; } = false;
+        public string Name { get; set; }
     }
 }

@@ -34,5 +34,26 @@ namespace DAL
             const string sql = @"select permissionid, name, description, isremove from Permission where IsRemove=0";
             return SQLHelper.FillDataTable(sql);
         }
+        
+        //根据用户ID查询用户权限
+        public DataTable GetUserPermissions(int userId)
+        {
+            const string sql = @"select PermissionId 
+                                    from userRole ur 
+                                        join rolePower rp on ur.RoleId = rp.RoleId
+                                    where UserId = @userId;";
+            return SQLHelper.FillDataTable(sql, new SqlParameter("@userId", userId));
+        }
+        
+        //修改权限
+        public int UpdatePermission(SQLHelper.TransactionContext tran, Permission permission)
+        {
+            const string sql = @"update Permission set Name=@Name,Description=@Description,IsRemove=@IsRemove where PermissionId=@PermissionId";
+            return SQLHelper.ExecuteNonQuery(tran,sql, 
+                new SqlParameter("@Name", permission.Name), 
+                new SqlParameter("@Description", permission.Description),
+                new SqlParameter("@IsRemove", permission.IsRemove),
+                new SqlParameter("@PermissionId", permission.PermissionId));
+        }
     }
 }

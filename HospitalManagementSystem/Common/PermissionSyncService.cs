@@ -49,6 +49,13 @@ namespace Common
         {
             var list1 = GetEnumPermissionList(UserManagement.AddUser);
             var list2 = GetEnumPermissionList(SystemManagement.UpdatePermission);
+            list2.AddRange(GetEnumPermissionList(OutpatientManagement.PatientRegistration));
+            list2.AddRange(GetEnumPermissionList(OutpatientFees.FindPatient));
+            list2.AddRange(GetEnumPermissionList(FinancialManagement.BusinessStatistics));
+            list2.AddRange(GetEnumPermissionList(DrugStorehouseManagement.DrugStorehouseIn));
+            list2.AddRange(GetEnumPermissionList(HospitalizationManagement.HospitalizationRegistration));
+            list2.AddRange(GetEnumPermissionList(PharmacyManagement.ViewPickUpOrder));
+            list2.AddRange(GetEnumPermissionList(OutpatientVisits.SelectPatient));
 
             List<EnumPermission> GetEnumPermissionList<TEumn>(TEumn enumType)
                 where TEumn : System.Enum
@@ -66,7 +73,7 @@ namespace Common
         }
         
         //获取枚举的特性
-        private  TAttribute GetEnumAttribute<TAttribute>(System.Enum enumValue) 
+        public  TAttribute GetEnumAttribute<TAttribute>(System.Enum enumValue) 
             where TAttribute : System.Attribute
         {
             var type = enumValue.GetType();

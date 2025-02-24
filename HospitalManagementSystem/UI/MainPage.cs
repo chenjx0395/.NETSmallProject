@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
+using Common.Attribute;
+using Common.Enum.Permissions;
 using HospitalManagementSystem.SystemManagement;
 
 namespace HospitalManagementSystem
 {
-    public partial class MainPage : Form
+    public partial class MainPage : SecureForm
     {
         public MainPage()
         {
@@ -20,6 +22,8 @@ namespace HospitalManagementSystem
         }
 
         //打开系统管理页面事件
+        // [PermissionRequired(typeof(UserManagement), UserManagement.DeleteUser)]
+        // [PermissionRequired(typeof(UserManagement), UserManagement.AddUser)]
         private void button1_Click(object sender, EventArgs e)
         {
             var smIndex = new SMIndex();

@@ -40,8 +40,20 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Attribute\PermissionMetaAttribute.cs" />
+        <Compile Include="Attribute\PermissionOperationLogAttribute.cs" />
+        <Compile Include="Attribute\PermissionRequiredAttribute.cs" />
+        <Compile Include="Constant\LogFlag\ActionTypeConstant.cs" />
+        <Compile Include="Constant\LogFlag\TargetTypeConstant.cs" />
+        <Compile Include="Enum\Permissions\DrugStorehouseManagement.cs" />
+        <Compile Include="Enum\Permissions\FinancialManagement.cs" />
+        <Compile Include="Enum\Permissions\HospitalizationManagement.cs" />
+        <Compile Include="Enum\Permissions\OutpatientFees.cs" />
+        <Compile Include="Enum\Permissions\OutpatientManagement.cs" />
+        <Compile Include="Enum\Permissions\OutpatientVisits.cs" />
+        <Compile Include="Enum\Permissions\PharmacyManagement.cs" />
         <Compile Include="Enum\Permissions\SystemManagement.cs" />
         <Compile Include="Enum\Permissions\UserManagement.cs" />
+        <Compile Include="PermissionLoggingProxy.cs" />
         <Compile Include="PermissionSyncService.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="Result.cs" />

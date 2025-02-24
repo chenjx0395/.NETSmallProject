@@ -78,7 +78,7 @@ namespace HospitalManagementSystem.SystemManagement
                     _permissionBLL.AddModulePermission(tran,mP);
                     tran.Commit();
                     MessageBox.Show(res1.Message);
-                    this.Close();
+                    // this.Close();
                 }
                 catch (Exception exception)
                 {

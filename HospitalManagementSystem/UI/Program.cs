@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using HospitalManagementSystem.SystemManagement;
 
 namespace HospitalManagementSystem
 {
@@ -31,17 +29,10 @@ namespace HospitalManagementSystem
                 return;
             }
             
-            // Application.Run(new Login());
+            Application.Run(new Login());
             //TODO 测试使用
-            Application.Run(new MainPage());
-            
-            
-           
-               
-                
-          
-            
-
+            // Application.Run(new MainPage());
+            // Application.Run(new PermissionManagementForm());
             
         }
     }

@@ -14,6 +14,7 @@ namespace HospitalManagementSystem.SystemManagement
         public ModuleAddOrUpdate()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // 加载数据，并根据数据的有无判断是修改操作还是新增操作
@@ -49,7 +50,7 @@ namespace HospitalManagementSystem.SystemManagement
             };
             var result = _moduleBLL.AddModule(module);
            MessageBox.Show(result.Message);
-           this.Close();
+           // this.Close();
         }
     }
 }
